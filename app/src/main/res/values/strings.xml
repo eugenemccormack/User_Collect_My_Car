@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">User App</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="login">Login</string>
+    <string name="Register">Register</string>
+    <string name="permission_require">Permission Location Required</string>
+    <string name="drivers_not_found">Drivers not found</string>
+    <string name="key_not_found">Key driver not found</string>
+    <string name="action_settings">Settings</string>
+    <string name="open">Open</string>
+    <string name="closed">Closed</string>
+    <string name="nav_header_desc">nav header desc</string>
+    <string name="nav_header_title">nav header title</string>
+    <string name="nav_header_subtitle">nav header subtitle</string>
+    <string name="welcome">Good Afternoon</string>
+    <string name="saved_places">Choose A Saved Place</string>
+    <string name="title_activity_request_driver">Map</string>
+    <string name="pay_by_card">Pay By Card</string>
+    <string name="confirm_driver">Confirm Driver</string>
+    <string name="confirm_pickup_location">Confirm Pickup Location</string>
+    <string name="address_temp">123 Fake Street</string>
+    <string name="confirm_pickup">Confirm Pickup</string>
+    <string name="collection_point">Collection Point</string>
+    <string name="title_activity_view_driver_info">ViewDriverInfo</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="send_request_driver_failed">Request Driver Failed</string>
+    <string name="token_not_found">Token Not Found</string>
+    <string name="no_driver_accept">No Driver Accepted Your Collection Request</string>
+    <string name="trip_not_found">Cannot Find Trip ID</string>
+    <string name="car_type_text">Driver Number</string>
+    <string name="car_number_text">12345678</string>
+    <string name="driver_name_example">John Barns</string>
+    <string name="ascii_square">■</string>
+    <string name="no_driver_selected">Please Select a Driver</string>
+
+
+</resources>

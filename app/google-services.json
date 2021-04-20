@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "723433510382",
+    "firebase_url": "https://collectmycar-c2834.firebaseio.com",
+    "project_id": "collectmycar-c2834",
+    "storage_bucket": "collectmycar-c2834.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723433510382:android:9843f383025061b3a7aaff",
+        "android_client_info": {
+          "package_name": "com.example.collect_my_car"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723433510382-eo9b0191dbv7f6gpb6mkgqu6mcf0m4s3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFsW6gkXj9gB7NR3PzFeGn4hIvytal-m4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723433510382-eo9b0191dbv7f6gpb6mkgqu6mcf0m4s3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723433510382:android:1f8b393195846e7ba7aaff",
+        "android_client_info": {
+          "package_name": "com.example.user_collect_my_car"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723433510382-eo9b0191dbv7f6gpb6mkgqu6mcf0m4s3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFsW6gkXj9gB7NR3PzFeGn4hIvytal-m4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723433510382-eo9b0191dbv7f6gpb6mkgqu6mcf0m4s3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
