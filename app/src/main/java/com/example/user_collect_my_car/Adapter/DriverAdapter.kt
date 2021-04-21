@@ -8,11 +8,45 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.user_collect_my_car.Model.DriverGeoModel
 import com.example.user_collect_my_car.Model.DriverInfoModel
+import com.example.user_collect_my_car.Model.TripPlanModel
 import com.example.user_collect_my_car.Model.UserModel
 import com.example.user_collect_my_car.R
+import kotlinx.android.synthetic.main.activity_recyclerview_layout.view.*
 import kotlin.collections.ArrayList
 
-class DriverAdapter (internal var context: Context): RecyclerView.Adapter<DriverAdapter.MyViewHolder>() {
+class DriverAdapter (val context: Context, val posts: List<TripPlanModel>): RecyclerView.Adapter<DriverAdapter.MyViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DriverAdapter.MyViewHolder {
+
+        val itemView = LayoutInflater.from(context).inflate(R.layout.activity_recyclerview_layout, parent, false)
+
+        return MyViewHolder(itemView)
+
+    }
+
+    override fun onBindViewHolder(holder: DriverAdapter.MyViewHolder, position: Int) {
+
+        holder.bind(posts[position])
+
+    }
+
+    override fun getItemCount() = posts.size
+    //) /*(internal var context: Context): RecyclerView.Adapter<DriverAdapter.MyViewHolder>() {
+
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(tripPlanModel: TripPlanModel) {
+
+            itemView.driver_name.text = tripPlanModel.destinationString
+            itemView.driver_email.text = tripPlanModel.user
+
+
+        }
+    }
+
+
+}
+
+
+    /*
 
     internal var driverList: MutableList<UserModel>
 
@@ -76,5 +110,5 @@ class DriverAdapter (internal var context: Context): RecyclerView.Adapter<Driver
         internal var driver_email: TextView = itemView.findViewById<TextView>(R.id.driver_email)
 
 
-    }
-}
+    }*/
+//}

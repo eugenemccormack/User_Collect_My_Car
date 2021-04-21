@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.user_collect_my_car.Adapter.DriverAdapter
 import com.example.user_collect_my_car.Common.Common
+import com.example.user_collect_my_car.Model.TripPlanModel
 import com.example.user_collect_my_car.Model.UserModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -27,32 +28,81 @@ class NavigationDrawerUser : AppCompatActivity() {
 
     //Variables
 
-    private lateinit var database : FirebaseDatabase
-    private lateinit var userInfoRef : DatabaseReference
+    private lateinit var database: FirebaseDatabase
+    private lateinit var userInfoRef: DatabaseReference
 
     val ITEM_COUNT = 21
     var total_item = 0
     var last_visable_item = 0
 
-    lateinit var adapter: DriverAdapter
+    //lateinit var adapter: DriverAdapter
 
     var isLoading = false
     var isMaxData = false
 
-    var last_node: String ?= ""
-    var last_key: String ?= ""
+    var last_node: String? = ""
+    var last_key: String? = ""
 
-
+    private lateinit var posts: MutableList<TripPlanModel>
+    lateinit var adapter: DriverAdapter
 
 
     lateinit var toggle: ActionBarDrawerToggle
 
-    private lateinit var image_avatar : ImageView
+    private lateinit var image_avatar: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recyclerview)//activity_navigation_drawer_user)
 
+        posts = mutableListOf()
+
+        adapter = DriverAdapter(this, posts)
+
+        recycler_view.adapter = adapter
+
+        recycler_view.layoutManager = LinearLayoutManager(this)
+
+        mAuth = FirebaseAuth.getInstance()
+
+        mUser = mAuth!!.currentUser
+        val userID = mUser!!.uid
+
+
+        database = FirebaseDatabase.getInstance()
+        val userInfoRef = database.getReference(Common.TRIP).child("4464204406145883896")//.child(userID).child("Collections").child("4464204406145883896")//.orderByKey()//child("2185699360067625422")//.child(userID).child("Collections").child("4464204406145883896")
+
+        userInfoRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+               // for (ds in snapshot.children) {
+
+                    val postList = snapshot.getValue(TripPlanModel::class.java)
+
+      /*              val id = ds.child("user").getValue(TripPlanModel::class.java)
+                    val text = ds.child("destinationString:").getValue(TripPlanModel::class.java)
+                    val time = ds.child("driver").getValue(TripPlanModel::class.java)*/
+                    //Log.d("TAG", text + " " + id + " " + time)
+
+
+                    Log.d("Test", "SnapShot $postList")
+                    if (postList != null) {
+                        posts.add(postList)
+
+
+                    }
+
+                    adapter.notifyDataSetChanged()
+               // }
+            }
+
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+
+/*
 
         getLastKey()
 
@@ -63,9 +113,9 @@ class NavigationDrawerUser : AppCompatActivity() {
         recycler_view.addItemDecoration(dividerItemDecoration)
 
         adapter = DriverAdapter(this)
-        recycler_view.adapter = adapter
+        recycler_view.adapter = adapter*/
 
-        getDrivers()
+/*        getDrivers()
 
         recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
 
@@ -88,7 +138,7 @@ class NavigationDrawerUser : AppCompatActivity() {
 
         })
 
-      /*  toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.closed)
+      *//*  toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.closed)
 
         drawerLayout.addDrawerListener(toggle)
 
@@ -166,7 +216,7 @@ class NavigationDrawerUser : AppCompatActivity() {
 
             Glide.with(this).load(Common.currentUser!!.image).into(image_avatar)
 
-        }*/
+        }*//*
 
 
     }
@@ -188,7 +238,7 @@ class NavigationDrawerUser : AppCompatActivity() {
 
             val query: Query
 
-            Log.d("Nav1", FirebaseDatabase.getInstance().getReference("UserInfo").child(userID).toString())
+            Log.d("Nav1", FirebaseDatabase.getInstance().getReference("UserInfo").child(userID).child("name").toString())
 
             if (TextUtils.isEmpty(last_node)) {
 
@@ -212,16 +262,23 @@ class NavigationDrawerUser : AppCompatActivity() {
 
                     if (snapshot.hasChildren()) {
 
-                        Log.d("Nav3", "hasChildren()")
+                        snapshot.getValue(UserModel::class.java)
 
                         val driverList = ArrayList<UserModel>()
 
-                        for (snapshot: DataSnapshot in snapshot.children)
+                        Log.d("Nav3.2", "SnapShot " + snapshot.getValue(UserModel::class.java))
 
+                        for (snapshot: DataSnapshot in snapshot.children) {
 
-                            driverList.add(snapshot.getValue(UserModel::class.java)!!)
+                            Log.d("Nav3.3", "SnapShot " + snapshot.getValue(UserModel::class.java))
 
-                        last_node = driverList[driverList.size - 1].phone
+                            val post = snapshot.getValue(UserModel::class.java)
+
+                            driverList.add(post!!)
+
+                        }
+
+                        last_node = driverList[driverList.size - 1].name
 
                         Log.d("Nav4", last_node.toString())
 
@@ -313,13 +370,13 @@ class NavigationDrawerUser : AppCompatActivity() {
 
         val id = item.itemId
 
-        /*if (toggle.onOptionsItemSelected(item)){
+        *//*if (toggle.onOptionsItemSelected(item)){
 
             return true
 
         }
 
-        else */
+        else *//*
         if(id == R.id.refresh) {
 
             isMaxData = false
@@ -341,6 +398,10 @@ class NavigationDrawerUser : AppCompatActivity() {
         menuInflater.inflate(R.menu.recyclerview_menu, menu)
 
         return true
+    }*/
+        })
     }
 }
+
+
 

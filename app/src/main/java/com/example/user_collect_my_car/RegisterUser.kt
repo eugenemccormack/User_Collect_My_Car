@@ -125,7 +125,7 @@ class RegisterUser : AppCompatActivity() {
         model.email = email_editText_register.text.toString()
         val password = password_editText_register.text.toString()
 
-        if(model.name.isEmpty()){
+        if(model.name!!.isEmpty()){
 
             Toast.makeText(this, "ERROR - Please Enter a Name", Toast.LENGTH_SHORT).show()
 
@@ -133,7 +133,7 @@ class RegisterUser : AppCompatActivity() {
 
         }
 
-        else if(model.phone.isEmpty()){
+        else if(model.phone!!.isEmpty()){
 
             Toast.makeText(this, "ERROR - Please Enter a Phone Number", Toast.LENGTH_SHORT).show()
 
@@ -141,7 +141,7 @@ class RegisterUser : AppCompatActivity() {
 
         }
 
-        else if(model.email.isEmpty()){
+        else if(model.email!!.isEmpty()){
 
             Toast.makeText(this, "ERROR - Please Enter a Email Address", Toast.LENGTH_SHORT).show()
 
@@ -173,7 +173,7 @@ class RegisterUser : AppCompatActivity() {
         Log.d("MainActivity", "Password is : $password")
 
         //Firebase Authentication to Create a User with Email and Password
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(model.email, password)
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(model.email!!, password)
             .addOnCompleteListener{
 
                 if(!it.isSuccessful) return@addOnCompleteListener
