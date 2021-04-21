@@ -913,11 +913,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
         }
         else{
 
-            Toast.makeText(
+            /*Toast.makeText(
                     this@MapsActivity,
                     getString(R.string.drivers_not_found),
                     Toast.LENGTH_SHORT
-            ).show()
+            ).show()*/
+
+            Log.d("MapsActivityTest", "Driver Not Found")
 
         }
 
