@@ -34,6 +34,8 @@ class TripPlanModel {
 
     var isCancelled = false
 
+    var time: String? = null
+
 
 
 }

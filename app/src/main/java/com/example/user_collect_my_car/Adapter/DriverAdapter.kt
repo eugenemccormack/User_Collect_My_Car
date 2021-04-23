@@ -35,7 +35,7 @@ class DriverAdapter (val context: Context, val posts: List<TripPlanModel>): Recy
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(tripPlanModel: TripPlanModel) {
 
-            itemView.driver_name.text = tripPlanModel.destinationString
+            itemView.driver_name.text = tripPlanModel.time
             itemView.driver_email.text = tripPlanModel.user
 
 

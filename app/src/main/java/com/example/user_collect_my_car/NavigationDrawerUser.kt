@@ -18,7 +18,9 @@ import com.example.user_collect_my_car.Model.UserModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 import kotlinx.android.synthetic.main.activity_recyclerview.*
+import java.util.ArrayList
 
 class NavigationDrawerUser : AppCompatActivity() {
 
@@ -44,6 +46,9 @@ class NavigationDrawerUser : AppCompatActivity() {
     var last_key: String? = ""
 
     private lateinit var posts: MutableList<TripPlanModel>
+    lateinit var testList: List<TripPlanModel>
+    lateinit var arrayTest: ArrayList<TripPlanModel>
+
     lateinit var adapter: DriverAdapter
 
 
@@ -70,36 +75,207 @@ class NavigationDrawerUser : AppCompatActivity() {
 
 
         database = FirebaseDatabase.getInstance()
-        val userInfoRef = database.getReference(Common.TRIP).child("4464204406145883896")//.child(userID).child("Collections").child("4464204406145883896")//.orderByKey()//child("2185699360067625422")//.child(userID).child("Collections").child("4464204406145883896")
+        //val userInfoRef = database.getReference(Common.USER_INFO_REFERENCE).child(userID).child("Collections")//.child("Test")//.child("MYzpNmIdZjgREGhR9_k")//.child("MYzomuuS0csr4LGlhYu")//.child(userID).child("Collections").child("4464204406145883896")//.orderByKey()//child("2185699360067625422")//.child(userID).child("Collections").child("4464204406145883896")
+
+        val userInfoRef = database.getReference(Common.TRIP)
 
         userInfoRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-               // for (ds in snapshot.children) {
+                for (ds in snapshot.children) {
 
-                    val postList = snapshot.getValue(TripPlanModel::class.java)
+                    val id = ds.key
 
-      /*              val id = ds.child("user").getValue(TripPlanModel::class.java)
-                    val text = ds.child("destinationString:").getValue(TripPlanModel::class.java)
-                    val time = ds.child("driver").getValue(TripPlanModel::class.java)*/
-                    //Log.d("TAG", text + " " + id + " " + time)
+                    //val text = ds.child("user:").getValue(TripPlanModel::class.java)
+//                    val time = ds.child("driver").getValue(UserModel::class.java)
+                    Log.d("Test ", "Key " + id )//+ " Test " + time)
+                    //Log.d("Test ", "User " + text )
+
+                            val userInfoRef3 = database.getReference(Common.TRIP).child(id!!).child("user")//orderByChild("user").equalTo(userID)
+
+                            userInfoRef3.addListenerForSingleValueEvent(object : ValueEventListener{
+                                override fun onDataChange(snapshot2: DataSnapshot) {
+
+                                    //for (ds2 in snapshot.children) {
+
+                                        //val id2 = snapshot2.getValue(TripPlanModel::class.java)
+                                        //val text = ds.child("user:").getValue(TripPlanModel::class.java)
+
+                                    Log.d("Test ", "Find 2.0  " + snapshot2)
+
+                                        if(snapshot2.value?.equals(userID) == true) {
+
+                                            Log.d("Test ", "FOUND  " + snapshot2) //Displays This: DataSnapshot { key = user, value = QdCe2CjMTvbWCGHvAoHXGQehGL33 }
+
+                                            Log.d("Test ", "FOUND KEY  " + snapshot2.key)
 
 
-                    Log.d("Test", "SnapShot $postList")
-                    if (postList != null) {
-                        posts.add(postList)
+
+                                        }
+                                       // Log.d("Test ", "Find 2.0  " + id2)
+
+                                  //  }
 
 
-                    }
+                                    //Log.d("Test ", "Find 2.0  " + userInfoRef3.toString() )
 
-                    adapter.notifyDataSetChanged()
-               // }
+                                   // Log.d("Test ", "FINDING $snapshot2")
+
+                                    //val text = ds.child("user:").getValue(TripPlanModel::class.java)
+                                    //val id2 = snapshot2.key
+
+                                   // Log.d("Test ", "Key2 " + id2 )
+
+                                   //val postList2 = snapshot2.getValue(TripPlanModel::class.java)
+
+                                    //val username = snapshot2.getValue(TripPlanModel::class.java)
+
+                                    //if(userID == username.toString()){
+
+                                       // Log.d("Test", "Username " + postList2)
+
+                                    //}
+
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {
+
+
+                                }
+                            })
+                                    val userInfoRef4 = database.getReference(Common.TRIP).child(id!!)//.child("user")//orderByChild("user").equalTo(userID)
+
+                                    userInfoRef4.addListenerForSingleValueEvent(object : ValueEventListener{
+                                        override fun onDataChange(snapshot3: DataSnapshot) {
+
+                                            //for (ds2 in snapshot.children) {
+
+                                            val search = snapshot3.child("user").value
+
+                                            val search2 = snapshot3.key
+
+                                            val search3 = snapshot3.child("Braking").child("MYlq3pbJyRDl_cY0EY1").child("sensor").value
+
+                                                Log.d("Test ", "SEARCH " + search)
+
+                                                  Log.d("Test ", "BRAKING " + search3)
+
+                                                if (search != null) {
+
+                                                    if (search == userID){
+
+                                                        Log.d("Test ", "SUCCESSFUL " + search)
+                                                        Log.d("Test ", "SUCCESSFUL KEY " + search2)
+
+                                                        val postList = snapshot3.getValue(TripPlanModel::class.java)
+
+                                                        //Log.d("Test", "SnapShot $postList") //This Works to get User / destinationString
+
+
+                                                        if (postList != null) {
+
+                                                            posts.add(postList)
+
+                                                        }
+
+                                                        adapter.notifyDataSetChanged()
+
+                                                    }
+                                                }
+                                                //for (ds2 in snapshot.children) {
+
+                                                //val id2 = snapshot2.getValue(TripPlanModel::class.java)
+                                                //val text = ds.child("user:").getValue(TripPlanModel::class.java)
+
+                                                Log.d("Test ", "FIND 2.0000  " + snapshot3)
+
+                                                if(snapshot3.value?.equals(userID) == true) {
+
+                                                    Log.d("Test ", "FOUND  2 " + snapshot3) //Displays This: DataSnapshot { key = user, value = QdCe2CjMTvbWCGHvAoHXGQehGL33 }
+
+                                                    Log.d("Test ", "FOUND KEY  2 " + snapshot3.key)
+
+                                                    Log.d("Test ", "FOUND KEY  2 " + snapshot3.value)
+
+
+
+                                                }
+
+                                            //}
+
+                                        }
+
+                                        override fun onCancelled(error: DatabaseError) {
+
+
+                                        }
+                                    })
+
+
+
+                   /* //val userInfoRef2 = database.getReference(Common.USER_INFO_REFERENCE).child(userID).child("Collections").child(id!!)//.child("driverInfoModel")
+
+                    val userInfoRef2 = database.getReference(Common.TRIP).child(id!!)//.orderByChild("user").equalTo(userID)//.child("driverInfoModel")
+
+                    //val username = ds.child("user").getValue(TripPlanModel::class.java)
+                    //Log.d("Test ", "Find  " + userInfoRef2 )
+
+                    //Log.d("Test", "Username " + username)
+
+                    userInfoRef2.addListenerForSingleValueEvent(object : ValueEventListener{
+
+                        override fun onDataChange(snapshot: DataSnapshot) {
+
+
+                            // val username = snapshot.child("user").getValue(TripPlanModel::class.java)
+
+                            val postList = snapshot.getValue(TripPlanModel::class.java)
+
+                            //Log.d("Test", "SnapShot $postList") //This Works to get User / destinationString
+
+
+                            if (postList != null) {
+
+                                posts.add(postList)
+
+                            }
+
+                            adapter.notifyDataSetChanged()
+                            //}
+                        }
+
+
+                        override fun onCancelled(error: DatabaseError) {
+
+                        }
+
+
+                    })*/
+
+
+
+
+                    //     adapter.notifyDataSetChanged()
+
+
+
+
+
+
+
+
+
+                }
             }
-
 
             override fun onCancelled(error: DatabaseError) {
 
             }
+
+
+
+
+        })
 
 
 /*
@@ -399,7 +575,7 @@ class NavigationDrawerUser : AppCompatActivity() {
 
         return true
     }*/
-        })
+
     }
 }
 
