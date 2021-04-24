@@ -1,11 +1,13 @@
 package com.example.user_collect_my_car
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -22,7 +24,7 @@ import com.google.firebase.database.ktx.getValue
 import kotlinx.android.synthetic.main.activity_recyclerview.*
 import java.util.ArrayList
 
-class NavigationDrawerUser : AppCompatActivity() {
+class NavigationDrawerUser : AppCompatActivity(), DriverAdapter.OnItemClickListener {
 
     private var mAuth: FirebaseAuth? = null
     private var mUser: FirebaseUser? = null
@@ -62,7 +64,7 @@ class NavigationDrawerUser : AppCompatActivity() {
 
         posts = mutableListOf()
 
-        adapter = DriverAdapter(this, posts)
+        adapter = DriverAdapter(this, posts, this)
 
         recycler_view.adapter = adapter
 
@@ -276,6 +278,8 @@ class NavigationDrawerUser : AppCompatActivity() {
 
 
         })
+
+
 
 
 /*
@@ -575,6 +579,20 @@ class NavigationDrawerUser : AppCompatActivity() {
 
         return true
     }*/
+
+    }
+
+    override fun onItemClick(position: Int) {
+
+        Toast.makeText(this, "Item $position clicked", Toast.LENGTH_SHORT).show()
+        val clickedItem = posts[position]
+
+        val intent = Intent(this, UserHistory::class.java)
+
+           // intent.putExtra(MESSGAE,marker.title)
+
+            startActivity(intent)
+
 
     }
 }

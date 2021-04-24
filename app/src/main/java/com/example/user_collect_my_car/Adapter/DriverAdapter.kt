@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide.init
 import com.example.user_collect_my_car.Model.DriverGeoModel
 import com.example.user_collect_my_car.Model.DriverInfoModel
 import com.example.user_collect_my_car.Model.TripPlanModel
@@ -14,7 +15,7 @@ import com.example.user_collect_my_car.R
 import kotlinx.android.synthetic.main.activity_recyclerview_layout.view.*
 import kotlin.collections.ArrayList
 
-class DriverAdapter (val context: Context, val posts: List<TripPlanModel>): RecyclerView.Adapter<DriverAdapter.MyViewHolder>() {
+class DriverAdapter (val context: Context, val posts: List<TripPlanModel>, private val listener: OnItemClickListener): RecyclerView.Adapter<DriverAdapter.MyViewHolder>()  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DriverAdapter.MyViewHolder {
 
         val itemView = LayoutInflater.from(context).inflate(R.layout.activity_recyclerview_layout, parent, false)
@@ -32,7 +33,7 @@ class DriverAdapter (val context: Context, val posts: List<TripPlanModel>): Recy
     override fun getItemCount() = posts.size
     //) /*(internal var context: Context): RecyclerView.Adapter<DriverAdapter.MyViewHolder>() {
 
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         fun bind(tripPlanModel: TripPlanModel) {
 
             itemView.driver_name.text = tripPlanModel.time
@@ -40,6 +41,32 @@ class DriverAdapter (val context: Context, val posts: List<TripPlanModel>): Recy
 
 
         }
+        init{
+
+            itemView.setOnClickListener(this)
+
+        }
+
+
+        override fun onClick(v: View?) {
+
+            val position = adapterPosition
+
+            if(position != RecyclerView.NO_POSITION) {
+
+                listener.onItemClick(position)
+
+            }
+
+        }
+
+
+    }
+
+    interface OnItemClickListener{
+        fun onItemClick(position: Int)
+
+
     }
 
 

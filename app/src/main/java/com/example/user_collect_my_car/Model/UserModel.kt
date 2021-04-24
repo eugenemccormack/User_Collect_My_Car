@@ -7,7 +7,7 @@ class UserModel {
     var email:String? = null
     var image:String? = null
 
-    var user: String? = null
+/*    var user: String? = null
 
     var driver: String? = null
 
@@ -37,9 +37,9 @@ class UserModel {
 
     var isDone = false
 
-    var isCancelled = false
+    var isCancelled = false*/
 
-    constructor() {
+/*    constructor() {
 
 
     }
@@ -51,7 +51,7 @@ class UserModel {
         this.image = image
         this.destinationString = destinationString
         this.user = user
-    }
+    }*/
 
 
 
