@@ -30,11 +30,13 @@ class TripPlanModel {
 
     var currentLng = 0.0
 
-    var isDone = false
+    var done = false
 
     var isCancelled = false
 
     var time: String? = null
+
+    var collectionPhotos: CollectionPhotos? = null
 
 /*    var collectionPhotos: String? = null
 

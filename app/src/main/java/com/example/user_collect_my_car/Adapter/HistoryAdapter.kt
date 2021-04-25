@@ -1,22 +1,17 @@
 package com.example.user_collect_my_car.Adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide.init
-import com.example.user_collect_my_car.Model.DriverGeoModel
-import com.example.user_collect_my_car.Model.DriverInfoModel
 import com.example.user_collect_my_car.Model.TripPlanModel
-import com.example.user_collect_my_car.Model.UserModel
 import com.example.user_collect_my_car.R
 import kotlinx.android.synthetic.main.activity_recyclerview_layout.view.*
-import kotlin.collections.ArrayList
 
-class DriverAdapter (val context: Context, val posts: List<TripPlanModel>, private val listener: OnItemClickListener): RecyclerView.Adapter<DriverAdapter.MyViewHolder>()  {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DriverAdapter.MyViewHolder {
+class HistoryAdapter (val context: Context, val posts: List<TripPlanModel>, private val listener: OnItemClickListener): RecyclerView.Adapter<HistoryAdapter.MyViewHolder>()  {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryAdapter.MyViewHolder {
 
         val itemView = LayoutInflater.from(context).inflate(R.layout.activity_recyclerview_layout, parent, false)
 
@@ -24,7 +19,7 @@ class DriverAdapter (val context: Context, val posts: List<TripPlanModel>, priva
 
     }
 
-    override fun onBindViewHolder(holder: DriverAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HistoryAdapter.MyViewHolder, position: Int) {
 
         holder.bind(posts[position])
 
@@ -36,8 +31,13 @@ class DriverAdapter (val context: Context, val posts: List<TripPlanModel>, priva
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         fun bind(tripPlanModel: TripPlanModel) {
 
-            itemView.driver_name.text = tripPlanModel.time
-            itemView.driver_email.text = tripPlanModel.user
+            itemView.driver_name.text = tripPlanModel.time//userModel.toString() //tripPlanModel.userModel!!.name //Users Name
+            itemView.driver_email.text = tripPlanModel.collectionNumber//collectionsPhotos!!.photos
+
+            Log.d("Adapter", "TIME" + tripPlanModel.time)
+
+            Log.d("Adapter", "USER" + tripPlanModel.collectionNumber)
+            //Glide.with(context).load(tripPlanModel.userModel!!.image).into(itemView.image)
 
 
         }

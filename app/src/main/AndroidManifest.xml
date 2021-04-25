@@ -51,7 +51,8 @@
         <activity
             android:name=".UserHistory"/>
         <activity android:name=".NavigationDrawerUser" />
-        <activity android:name=".UserHistoryImages" />
+        <activity android:name=".ViewCollectionPhotos" />
+        <activity android:name=".ViewDropOffPhotos" />
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />

@@ -2,31 +2,22 @@ package com.example.user_collect_my_car
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.user_collect_my_car.Adapter.DriverAdapter
+import com.example.user_collect_my_car.Adapter.HistoryAdapter
 import com.example.user_collect_my_car.Common.Common
-import com.example.user_collect_my_car.MapsActivity.Companion.MESSGAE
 import com.example.user_collect_my_car.Model.TripPlanModel
-import com.example.user_collect_my_car.Model.UserModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.getValue
 import kotlinx.android.synthetic.main.activity_recyclerview.*
-import kotlinx.android.synthetic.main.activity_user_history.*
 import java.util.ArrayList
 
-class NavigationDrawerUser : AppCompatActivity(), DriverAdapter.OnItemClickListener {
+class NavigationDrawerUser : AppCompatActivity(), HistoryAdapter.OnItemClickListener {
 
     private var mAuth: FirebaseAuth? = null
     private var mUser: FirebaseUser? = null
@@ -58,7 +49,7 @@ class NavigationDrawerUser : AppCompatActivity(), DriverAdapter.OnItemClickListe
     lateinit var testList: List<TripPlanModel>
     lateinit var arrayTest: ArrayList<TripPlanModel>
 
-    lateinit var adapter: DriverAdapter
+    lateinit var adapter: HistoryAdapter
 
 
     lateinit var toggle: ActionBarDrawerToggle
@@ -71,7 +62,7 @@ class NavigationDrawerUser : AppCompatActivity(), DriverAdapter.OnItemClickListe
 
         posts = mutableListOf()
 
-        adapter = DriverAdapter(this, posts, this)
+        adapter = HistoryAdapter(this, posts, this)
 
         recycler_view.adapter = adapter
 
@@ -90,6 +81,8 @@ class NavigationDrawerUser : AppCompatActivity(), DriverAdapter.OnItemClickListe
 
         userInfoRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                posts.clear()
 
                 for (ds in snapshot.children) {
 
@@ -165,9 +158,30 @@ class NavigationDrawerUser : AppCompatActivity(), DriverAdapter.OnItemClickListe
 
                                             val search3 = snapshot3.child("Braking").child("MYlq3pbJyRDl_cY0EY1").child("sensor").value
 
-                                                Log.d("Test ", "SEARCH " + search)
+                                            Log.d("Test ", "SEARCH " + search)
 
-                                                  Log.d("Test ", "BRAKING " + search3)
+                                            Log.d("Test ", "BRAKING " + search3)
+
+
+
+                                            val searchPhoto = snapshot3.child("collectionPhotos")
+
+                                            val searchPhotoKey = snapshot3.child("collectionPhotos").key
+
+                                            val searchPhotoChildren = snapshot3.child("collectionPhotos").children
+
+                                            for (ds in snapshot.children) {
+
+
+                                            }
+
+
+
+                                            Log.d("Test ", "PHOTO SEARCH " + searchPhoto)
+
+                                            Log.d("Test ", "PHOTO SEARCH KEY " + searchPhotoKey)
+
+                                            Log.d("Test ", "PHOTO SEARCH CHILDREN " + searchPhotoChildren)
 
                                                 if (search != null) {
 
@@ -176,8 +190,14 @@ class NavigationDrawerUser : AppCompatActivity(), DriverAdapter.OnItemClickListe
                                                         Log.d("Test ", "SUCCESSFUL " + search)
                                                         Log.d("Test ", "SUCCESSFUL KEY " + search2)
 
+                                                        val testMap = HashMap<String, TripPlanModel>()
 
-                                                        val postList = snapshot3.getValue(TripPlanModel::class.java)
+
+                                                        val postList = snapshot3.getValue(TripPlanModel::class.java) ?: return
+
+                                                        testMap[snapshot3.key!!] = postList
+
+                                                        Log.d("Test", "TESTMAP $testMap")
 
                                                         Log.d("Test", "SnapShot $postList") //This Works to get User / destinationString
 
@@ -277,6 +297,8 @@ class NavigationDrawerUser : AppCompatActivity(), DriverAdapter.OnItemClickListe
 
 
                 }
+
+
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -589,6 +611,14 @@ class NavigationDrawerUser : AppCompatActivity(), DriverAdapter.OnItemClickListe
         return true
     }*/
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        //posts.clear()
+
+        adapter.notifyDataSetChanged()
     }
 
     override fun onItemClick(position: Int) {

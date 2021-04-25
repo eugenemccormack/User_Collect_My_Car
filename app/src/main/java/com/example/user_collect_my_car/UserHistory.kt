@@ -10,22 +10,28 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.user_collect_my_car.Common.Common
-import com.example.user_collect_my_car.MapsActivity.Companion.MESSGAE
-import com.example.user_collect_my_car.Model.DriverInfoModel
 import com.example.user_collect_my_car.Model.TripPlanModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_user_history.*
 import kotlinx.android.synthetic.main.activity_view_driver_info.*
 import java.io.IOException
-import java.lang.Float.parseFloat
 import java.util.*
 
 class UserHistory: AppCompatActivity() {
 
+    companion object{
+
+        val MESSGAE = "Message"
+    }
+
+
     private lateinit var database : FirebaseDatabase
     private lateinit var trip : DatabaseReference
     private lateinit var firebaseAuth : FirebaseAuth
+
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +39,7 @@ class UserHistory: AppCompatActivity() {
         setContentView(R.layout.activity_user_history)
 
 
-        //var collection_id = intent.getStringExtra(MapsActivity.MESSGAE)
+
 
         //collection_id = driver_Key.text.toString()
 
@@ -117,9 +123,9 @@ class UserHistory: AppCompatActivity() {
         //from_location_history.text =  Common.collectionInfo!!.originString
         to_location_history.text =  Common.collectionInfo!!.destinationString
 
-        var complete = false
+        var complete: Boolean
 
-        complete = Common.collectionInfo!!.isDone
+        complete = Common.collectionInfo!!.done
 
 
 
@@ -127,13 +133,13 @@ class UserHistory: AppCompatActivity() {
 
             driver_complete_history.text = "Complete"
 
-            Log.d("UserHistory", "isDone True : " +  Common.collectionInfo!!.isDone.toString())
+            Log.d("UserHistory", "isDone True : " +  Common.collectionInfo!!.done.toString())
         }
         else{
 
             driver_complete_history.text = "In Progress"
 
-            Log.d("UserHistory", "isDone False : " +  Common.collectionInfo!!.isDone.toString())
+            Log.d("UserHistory", "isDone False : " +  Common.collectionInfo!!.done.toString())
 
         }
 
@@ -190,13 +196,29 @@ class UserHistory: AppCompatActivity() {
 
         }
 
-/*        select_photos.setOnClickListener {
+        collection_photos.setOnClickListener {
 
-            val intent = Intent(this, UserHistoryImages::class.java)
+            var collection_id2 = intent.getStringExtra(NavigationDrawerUser.MESSGAE)
+
+            val intent = Intent(this, ViewCollectionPhotos::class.java)
+
+            intent.putExtra(NavigationDrawerUser.MESSGAE, collection_id2)
 
             startActivity(intent)
 
-        }*/
+        }
+
+        drop_off_photos.setOnClickListener {
+
+            var collection_id2 = intent.getStringExtra(NavigationDrawerUser.MESSGAE)
+
+            val intent = Intent(this, ViewDropOffPhotos::class.java)
+
+            intent.putExtra(NavigationDrawerUser.MESSGAE, collection_id2)
+
+            startActivity(intent)
+
+        }
 
 
 
