@@ -15,10 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import androidx.core.app.NotificationCompat
-import com.example.user_collect_my_car.Model.AnimationModel
-import com.example.user_collect_my_car.Model.DriverGeoModel
-import com.example.user_collect_my_car.Model.DriverInfoModel
-import com.example.user_collect_my_car.Model.UserModel
+import com.example.user_collect_my_car.Model.*
 import com.example.user_collect_my_car.R
 import com.example.user_collect_my_car.RequestDriverActivity
 import com.google.android.gms.maps.model.LatLng
@@ -68,6 +65,8 @@ object Common {
     val DRIVERS_LOCATION_REFERENCE: String = "DriversLocation" //Same a Driver App
 
     var currentUser: UserModel?=null
+
+    var collectionInfo: TripPlanModel?=null
 
    var selectedDriver: DriverInfoModel?=null
 

@@ -177,7 +177,7 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
                                                 var blackPolylineOptions: PolylineOptions ?= null
                                                 var polylineList:List<LatLng?> ?= null
-                                                var blackPolyline: Polyline ?= null
+                                                var blackPolyline : Polyline ?= null
 
                                                 try {
 

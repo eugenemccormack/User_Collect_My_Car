@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.user_collect_my_car.Adapter.DriverAdapter
 import com.example.user_collect_my_car.Common.Common
+import com.example.user_collect_my_car.MapsActivity.Companion.MESSGAE
 import com.example.user_collect_my_car.Model.TripPlanModel
 import com.example.user_collect_my_car.Model.UserModel
 import com.google.firebase.auth.FirebaseAuth
@@ -22,6 +23,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import kotlinx.android.synthetic.main.activity_recyclerview.*
+import kotlinx.android.synthetic.main.activity_user_history.*
 import java.util.ArrayList
 
 class NavigationDrawerUser : AppCompatActivity(), DriverAdapter.OnItemClickListener {
@@ -46,6 +48,11 @@ class NavigationDrawerUser : AppCompatActivity(), DriverAdapter.OnItemClickListe
 
     var last_node: String? = ""
     var last_key: String? = ""
+
+    companion object{
+
+        val MESSGAE = "Message"
+    }
 
     private lateinit var posts: MutableList<TripPlanModel>
     lateinit var testList: List<TripPlanModel>
@@ -169,14 +176,16 @@ class NavigationDrawerUser : AppCompatActivity(), DriverAdapter.OnItemClickListe
                                                         Log.d("Test ", "SUCCESSFUL " + search)
                                                         Log.d("Test ", "SUCCESSFUL KEY " + search2)
 
+
                                                         val postList = snapshot3.getValue(TripPlanModel::class.java)
 
-                                                        //Log.d("Test", "SnapShot $postList") //This Works to get User / destinationString
+                                                        Log.d("Test", "SnapShot $postList") //This Works to get User / destinationString
 
 
                                                         if (postList != null) {
 
                                                             posts.add(postList)
+
 
                                                         }
 
@@ -587,12 +596,35 @@ class NavigationDrawerUser : AppCompatActivity(), DriverAdapter.OnItemClickListe
         Toast.makeText(this, "Item $position clicked", Toast.LENGTH_SHORT).show()
         val clickedItem = posts[position]
 
+        //posts.indexOf(clickedItem.user)
+
+        var collectionNumber = posts.elementAt(position).collectionNumber
+
+
+
+        //Log.d("ViewCollection", "LIST POSITION " + posts.indexOf(clickedItem.user))
+
+        Log.d("ViewCollection", "ELEMENT AT  POSITION " + posts.elementAt(position))
+
+        Log.d("ViewCollection", "ELEMENT AT  POSITION USER " + posts.elementAt(position).user)
+
+        Log.d("ViewCollection", "ELEMENT AT  POSITION USER " + posts.elementAt(position).collectionNumber)
+
+
         val intent = Intent(this, UserHistory::class.java)
 
-           // intent.putExtra(MESSGAE,marker.title)
+           intent.putExtra(MESSGAE,collectionNumber)
 
             startActivity(intent)
 
+
+    }
+
+    override fun onBackPressed() {
+
+        //posts.clear()
+
+        finish()
 
     }
 }
