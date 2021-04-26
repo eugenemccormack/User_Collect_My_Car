@@ -1,4 +1,1003 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="1dp"
+    tools:context=".RegisterUser">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:text="User Register"
+                android:textColor="@color/dark_Blue"
+                android:textSize="30dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dark_Blue"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:text="Photo"
+                android:textColor="@color/dark_Blue"
+                android:textSize="25dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_profileImage"
+                android:layout_width="113dp"
+                android:layout_height="112dp"
+                android:src="@drawable/ic_launcher_background" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dark_Blue"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:text="User Details"
+                android:textColor="@color/dark_Blue"
+                android:textSize="25dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/name_textView_register"
+                android:layout_width="100dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/username_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textColorHint="#CE101920"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/email_textView_register"
+                android:layout_width="100dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/email_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:hint="Email"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textColorHint="#CE101920"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/phone_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Phone"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/phone_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:hint="Phone"
+                android:inputType="phone"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/address1_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Address 1"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/address1_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:hint="Line 1"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/address2_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Address 2"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/address2_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:hint="Line 2"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/county_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="County"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/county_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:hint="County"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dark_Blue"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:text="Car Details"
+                android:textColor="@color/dark_Blue"
+                android:textSize="25dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/car_reg_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Reg"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/car_reg_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:hint="Registration"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/carmake_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Make"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/carmake_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:hint="Make"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/carmodel_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Model"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/carmodel_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:hint="Model"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/car_colour_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Colour"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/car_colour_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:hint="Colour"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dark_Blue"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:text="Licence Details"
+                android:textColor="@color/dark_Blue"
+                android:textSize="25dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/licence_surname_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Surname"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/licence_surname_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:hint="Surname"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/licence_firstname_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="First Name"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/licence_firstname_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:hint="First Name"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/licence_dob_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Birth Date"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/licence_dob_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:inputType="date"
+                android:gravity="center"
+                android:hint="Date of Birth"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/licence_issue_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Issue"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/licence_issue_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:inputType="date"
+                android:gravity="center"
+                android:hint="Date of Issue"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/licence_expiry_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Expiry"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/licence_expiry_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:inputType="date"
+                android:gravity="center"
+                android:hint="Date of Expiry"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/licence_driver_number_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Driver"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/licence_driver_number_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:hint="Number"
+                android:inputType="number"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/licence_number_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Licence"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/licence_number_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:hint="Number"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+
+            <Button
+                android:id="@+id/licence_upload_button_register"
+                android:layout_width="200dp"
+                android:layout_height="42dp"
+                android:background="@drawable/button_border"
+                android:text="Upload Licence"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dark_Blue"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:text="Insurance Details"
+                android:textColor="@color/dark_Blue"
+                android:textSize="25dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/insurance_name_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Insurer"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/insurance_name_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:hint="Name"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/insurance_cover_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Cover"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/insurance_expiry_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Expiry"
+                android:gravity="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/insurance_expiry_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:inputType="date"
+                android:gravity="center"
+                android:hint="Date of Expiry"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+
+            <Button
+                android:id="@+id/insurance_upload_button_register"
+                android:layout_width="200dp"
+                android:layout_height="42dp"
+                android:background="@drawable/button_border"
+                android:text="Upload Insurance"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dark_Blue"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:text="Account Password"
+                android:textColor="@color/dark_Blue"
+                android:textSize="25dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/password_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="Password"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/password_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:inputType="textPassword"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/confirm_password_textView_register"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="Confirm"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/confirm_password_editText_register"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:inputType="textPassword"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dark_Blue"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="20dp"
+            android:paddingBottom="8dp">
+
+
+            <Button
+                android:id="@+id/register_button_register"
+                android:layout_width="140dp"
+                android:layout_height="42dp"
+                android:background="@drawable/button_border"
+                android:text="@string/Register"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/not_signed_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already Signed Up?"
+                android:textColor="#0A1482"
+                android:textSize="18dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,103 +1007,12 @@
     tools:context=".RegisterUser">
 
 
-
-    <!--<TextView
-        android:id="@+id/login_textView_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.046" />-->
-
-    <!--    <EditText
-            android:id="@+id/username_editText_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/register_edittext"
-            android:ems="10"
-            android:hint="Username"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"
-            android:inputType="textPersonName"
-            android:paddingLeft="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_textView_login"
-            app:layout_constraintVertical_bias="0.08" />-->
-
-    <!--    <EditText
-            android:id="@+id/email_editText_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/register_edittext"
-            android:ems="10"
-            android:hint="Email"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"
-            android:inputType="textEmailAddress"
-            android:paddingLeft="20dp"
-            app:layout_constraintEnd_toEndOf="@+id/username_editText_register"
-            app:layout_constraintStart_toStartOf="@+id/username_editText_register"
-            app:layout_constraintTop_toBottomOf="@+id/username_editText_register" />-->
-
-    <!--    <EditText
-            android:id="@+id/password_editText_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/register_edittext"
-            android:ems="10"
-            android:hint="Password"
-            android:textColorHint="@color/black"
-            android:textColor="@color/black"
-            android:inputType="textPassword"
-            android:paddingLeft="20dp"
-            app:layout_constraintEnd_toEndOf="@+id/email_editText_register"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/email_editText_register"
-            app:layout_constraintTop_toBottomOf="@+id/email_editText_register" />-->
-
-    <!-- <Button
-         android:id="@+id/register_button_register"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="300dp"
-         android:layout_marginBottom="386dp"
-         android:text="Register"
-         app:layout_constraintBottom_toBottomOf="parent"
-         app:layout_constraintEnd_toEndOf="@+id/password_editText_register"
-         app:layout_constraintStart_toStartOf="@+id/password_editText_register"
-         app:layout_constraintTop_toBottomOf="@+id/password_editText_register" />-->
-
-    <!--    <TextView
-            android:id="@+id/not_signed_up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:text="Already Signed Up?"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/register_button_register"
-            app:layout_constraintStart_toStartOf="@+id/register_button_register"
-            app:layout_constraintTop_toBottomOf="@+id/register_button_register" />-->
-
     <TextView
         android:id="@+id/login_textView_login"
         android:layout_width="162dp"
         android:layout_height="60dp"
         android:gravity="center"
-        android:text="User"
+        android:text="@string/Register"
         android:textColor="#0A1482"
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/username_editText_register"
@@ -296,4 +1204,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.154" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>-->

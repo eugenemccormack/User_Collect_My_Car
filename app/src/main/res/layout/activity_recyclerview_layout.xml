@@ -7,14 +7,15 @@
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
-    app:cardBackgroundColor="#B9D9F4">
+    android:layout_marginBottom="10dp"
+    android:background="@color/dark_Blue">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/button_border"
-        android:padding="8dp">
+        android:background="@drawable/cardview_border"
+        android:padding="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,6 +36,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="Collection :"
+                android:textColor="@color/dark_Blue"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
@@ -53,8 +55,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="@color/light_Blue"/>
+            android:layout_height="3dp"
+            android:background="@color/dark_Blue"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,6 +73,7 @@
             android:layout_marginLeft="10dp"
             android:textStyle="bold"
             android:textSize="20dp"
+            android:textColor="@color/dark_Blue"
             android:gravity="center_vertical"
             android:ellipsize="end"
             android:maxLines="1"
@@ -91,8 +94,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="@color/light_Blue"/>
+            android:layout_height="3dp"
+            android:background="@color/dark_Blue"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -110,6 +113,7 @@
             android:layout_marginLeft="10dp"
             android:text="From :"
             android:textSize="20dp"
+            android:textColor="@color/dark_Blue"
             android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 

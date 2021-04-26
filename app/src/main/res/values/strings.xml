@@ -37,5 +37,16 @@
     <string name="ascii_square">■</string>
     <string name="no_driver_selected">Please Select a Driver</string>
 
+    <string name="selected_item">Selected item:</string>
+
+    <string-array name="Languages">
+        <item>Java</item>
+        <item>Kotlin</item>
+        <item>Swift</item>
+        <item>Python</item>
+        <item>Scala</item>
+        <item>Perl</item>
+    </string-array>
+
 
 </resources>
