@@ -31,8 +31,10 @@ class HistoryAdapter (val context: Context, val posts: List<TripPlanModel>, priv
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         fun bind(tripPlanModel: TripPlanModel) {
 
-            itemView.driver_name.text = tripPlanModel.time//userModel.toString() //tripPlanModel.userModel!!.name //Users Name
-            itemView.driver_email.text = tripPlanModel.collectionNumber//collectionsPhotos!!.photos
+            itemView.id_history.text = tripPlanModel.collectionNumber//collectionsPhotos!!.photos
+            itemView.date_history.text = tripPlanModel.time//userModel.toString() //tripPlanModel.userModel!!.name //Users Name
+            itemView.from_history.text = tripPlanModel.originString
+
 
             Log.d("Adapter", "TIME" + tripPlanModel.time)
 

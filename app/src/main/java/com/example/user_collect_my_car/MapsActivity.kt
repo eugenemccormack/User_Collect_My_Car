@@ -216,11 +216,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
                 R.id.mItem2 -> {
 
-                    intent = Intent(this, NavigationDrawerUser::class.java)
+                    intent = Intent(this, History::class.java)
 
                     startActivity(intent)
 
-                    Toast.makeText(applicationContext, "Navigation Activity", Toast.LENGTH_SHORT)
+                    Toast.makeText(applicationContext, "History", Toast.LENGTH_SHORT)
                             .show()
                 }
 

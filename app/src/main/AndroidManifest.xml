@@ -50,7 +50,7 @@
         android:label="@string/title_activity_view_driver_info"/>
         <activity
             android:name=".UserHistory"/>
-        <activity android:name=".NavigationDrawerUser" />
+        <activity android:name=".History" />
         <activity android:name=".ViewCollectionPhotos" />
         <activity android:name=".ViewDropOffPhotos" />
         <activity

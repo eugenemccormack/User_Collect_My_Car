@@ -53,7 +53,7 @@ class UserHistory: AppCompatActivity() {
 
         Log.d("ViewCollection", "getUserFromFirebase")
 
-        var collection_id = intent.getStringExtra(NavigationDrawerUser.MESSGAE)
+        var collection_id = intent.getStringExtra(History.MESSGAE)
 
         database = FirebaseDatabase.getInstance()
         trip = database.getReference(Common.TRIP)
@@ -120,7 +120,7 @@ class UserHistory: AppCompatActivity() {
         collectionID_history.text =  Common.collectionInfo!!.collectionNumber
 
         driver_date_history.text =  Common.collectionInfo!!.time
-        //from_location_history.text =  Common.collectionInfo!!.originString
+        from_location_history.text =  Common.collectionInfo!!.originString
         to_location_history.text =  Common.collectionInfo!!.destinationString
 
         var complete: Boolean
@@ -151,7 +151,7 @@ class UserHistory: AppCompatActivity() {
         driver_email_history.text = Common.collectionInfo!!.driverInfoModel!!.email
         driver_phone_history.text = Common.collectionInfo!!.driverInfoModel!!.phone
 
-        val geoCoder = Geocoder(this@UserHistory, Locale.getDefault())
+/*        val geoCoder = Geocoder(this@UserHistory, Locale.getDefault())
 
         var collectionLocation = Common.collectionInfo!!.originString
 
@@ -185,7 +185,7 @@ class UserHistory: AppCompatActivity() {
 
             Log.d("UserHistory", "IOException $e")
 
-        }
+        }*/
 
 
 
@@ -198,11 +198,11 @@ class UserHistory: AppCompatActivity() {
 
         collection_photos.setOnClickListener {
 
-            var collection_id2 = intent.getStringExtra(NavigationDrawerUser.MESSGAE)
+            var collection_id2 = intent.getStringExtra(History.MESSGAE)
 
             val intent = Intent(this, ViewCollectionPhotos::class.java)
 
-            intent.putExtra(NavigationDrawerUser.MESSGAE, collection_id2)
+            intent.putExtra(History.MESSGAE, collection_id2)
 
             startActivity(intent)
 
@@ -210,11 +210,11 @@ class UserHistory: AppCompatActivity() {
 
         drop_off_photos.setOnClickListener {
 
-            var collection_id2 = intent.getStringExtra(NavigationDrawerUser.MESSGAE)
+            var collection_id2 = intent.getStringExtra(History.MESSGAE)
 
             val intent = Intent(this, ViewDropOffPhotos::class.java)
 
-            intent.putExtra(NavigationDrawerUser.MESSGAE, collection_id2)
+            intent.putExtra(History.MESSGAE, collection_id2)
 
             startActivity(intent)
 

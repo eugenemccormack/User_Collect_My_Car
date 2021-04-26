@@ -17,7 +17,7 @@ import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_recyclerview.*
 import java.util.ArrayList
 
-class NavigationDrawerUser : AppCompatActivity(), HistoryAdapter.OnItemClickListener {
+class History : AppCompatActivity(), HistoryAdapter.OnItemClickListener {
 
     private var mAuth: FirebaseAuth? = null
     private var mUser: FirebaseUser? = null

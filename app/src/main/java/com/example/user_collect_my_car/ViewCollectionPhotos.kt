@@ -42,7 +42,7 @@ class ViewCollectionPhotos: AppCompatActivity(), ImageAdapter.OnItemClickListene
         mUser = mAuth!!.currentUser
         val userID = mUser!!.uid*/
 
-        var collection_id = intent.getStringExtra(NavigationDrawerUser.MESSGAE)
+        var collection_id = intent.getStringExtra(History.MESSGAE)
 
 
         database = FirebaseDatabase.getInstance()

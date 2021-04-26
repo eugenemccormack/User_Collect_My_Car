@@ -10,8 +10,8 @@
 
     <item
         android:id="@+id/mItem2"
-        android:title="Navigation Page"
-        android:icon="@drawable/ic_baseline_navigation_24"/>
+        android:title="History"
+        android:icon="@drawable/ic_baseline_history_24"/>
 
     <item
         android:id="@+id/mItem3"
