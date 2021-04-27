@@ -798,11 +798,18 @@
                 android:textColor="@color/dark_Blue"
                 android:textSize="20dp" />
 
-            <Spinner
-                android:id="@+id/spinner"
+            <EditText
+                android:id="@+id/insurance_cover_editText_register"
                 android:layout_width="225dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/register_edittext"/>
+                android:background="@drawable/register_edittext"
+                android:inputType="date"
+                android:gravity="center"
+                android:hint="Type of Cover"
+                android:textColorHint="#CE101920"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
 
         </LinearLayout>
 
