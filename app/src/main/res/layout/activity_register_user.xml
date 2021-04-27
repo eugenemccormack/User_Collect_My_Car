@@ -28,7 +28,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_vertical"
-                android:text="User Register"
+                android:text="Register"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@color/dark_Blue"
                 android:textSize="30dp" />
 
@@ -53,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_vertical"
-                android:text="Photo"
+                android:text="Photo Upload"
                 android:textColor="@color/dark_Blue"
                 android:textSize="25dp" />
 
@@ -292,7 +293,8 @@
                 android:textColorHint="#CE101920"
                 android:textAlignment="center"
                 android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:layout_marginBottom="15dp"/>
 
         </LinearLayout>
 
@@ -445,283 +447,12 @@
                 android:textColorHint="#CE101920"
                 android:textAlignment="center"
                 android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:layout_marginBottom="15dp"/>
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/dark_Blue"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_vertical"
-                android:text="Licence Details"
-                android:textColor="@color/dark_Blue"
-                android:textSize="25dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:id="@+id/licence_surname_textView_register"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Surname"
-                android:gravity="center"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/licence_surname_editText_register"
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/register_edittext"
-                android:gravity="center"
-                android:hint="Surname"
-                android:textColorHint="#CE101920"
-                android:textAlignment="center"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:id="@+id/licence_firstname_textView_register"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="First Name"
-                android:gravity="center"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/licence_firstname_editText_register"
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/register_edittext"
-                android:gravity="center"
-                android:hint="First Name"
-                android:textColorHint="#CE101920"
-                android:textAlignment="center"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:id="@+id/licence_dob_textView_register"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Birth Date"
-                android:gravity="center"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/licence_dob_editText_register"
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/register_edittext"
-                android:inputType="date"
-                android:gravity="center"
-                android:hint="Date of Birth"
-                android:textColorHint="#CE101920"
-                android:textAlignment="center"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:id="@+id/licence_issue_textView_register"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Issue"
-                android:gravity="center"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/licence_issue_editText_register"
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/register_edittext"
-                android:inputType="date"
-                android:gravity="center"
-                android:hint="Date of Issue"
-                android:textColorHint="#CE101920"
-                android:textAlignment="center"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:id="@+id/licence_expiry_textView_register"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Expiry"
-                android:gravity="center"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/licence_expiry_editText_register"
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/register_edittext"
-                android:inputType="date"
-                android:gravity="center"
-                android:hint="Date of Expiry"
-                android:textColorHint="#CE101920"
-                android:textAlignment="center"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:id="@+id/licence_driver_number_textView_register"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Driver"
-                android:gravity="center"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/licence_driver_number_editText_register"
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/register_edittext"
-                android:gravity="center"
-                android:hint="Number"
-                android:inputType="number"
-                android:textColorHint="#CE101920"
-                android:textAlignment="center"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:id="@+id/licence_number_textView_register"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Licence"
-                android:gravity="center"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/licence_number_editText_register"
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/register_edittext"
-                android:gravity="center"
-                android:hint="Number"
-                android:textColorHint="#CE101920"
-                android:textAlignment="center"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-
-            <Button
-                android:id="@+id/licence_upload_button_register"
-                android:layout_width="200dp"
-                android:layout_height="42dp"
-                android:background="@drawable/button_border"
-                android:text="Upload Licence"
-                android:gravity="center"
-                android:textColor="#FFFFFF"
-                android:textSize="20dp" />
-
-        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -842,7 +573,7 @@
                 android:textColorHint="#CE101920"
                 android:textAlignment="center"
                 android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
+                android:textSize="20dp"/>
 
         </LinearLayout>
 
@@ -851,8 +582,8 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:gravity="center"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
+            android:paddingTop="30dp"
+            android:layout_marginBottom="30dp">
 
 
             <Button
@@ -863,7 +594,7 @@
                 android:text="Upload Insurance"
                 android:gravity="center"
                 android:textColor="#FFFFFF"
-                android:textSize="20dp" />
+                android:textSize="20dp"/>
 
         </LinearLayout>
 
@@ -950,7 +681,8 @@
                 android:inputType="textPassword"
                 android:textAlignment="center"
                 android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:layout_marginBottom="15dp"/>
 
         </LinearLayout>
 
@@ -965,7 +697,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:gravity="center"
-            android:paddingTop="20dp"
+            android:paddingTop="30dp"
             android:paddingBottom="8dp">
 
 
@@ -987,8 +719,8 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:gravity="center"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
+            android:paddingTop="15dp"
+            android:paddingBottom="25dp">
 
             <TextView
                 android:id="@+id/not_signed_up"

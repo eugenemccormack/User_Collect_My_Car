@@ -53,8 +53,10 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".RegisterUser" />
-        <activity android:name=".LoginUser">
+        <activity android:name=".RegisterUser"
+            android:label="Register"/>
+        <activity android:name=".LoginUser"
+            android:label="Customer">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

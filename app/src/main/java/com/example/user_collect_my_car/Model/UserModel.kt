@@ -15,15 +15,6 @@ class UserModel {
     var carModel:String? = null
     var carColour:String? = null
 
-    var licenceSurname:String? = null
-    var licenceFirstName:String? = null
-    //var licenceBOD = 0
-    var licenceIssueDate = 0
-    var licenceExpiryDate = 0
-    var licenceDriverNumber = 0
-    var licenceNumber:String? = null
-    var licenceDocuments:String? = null
-
     var insurer:String? = null
     var insuranceType:String? = null
     var insuranceExpiry = 0

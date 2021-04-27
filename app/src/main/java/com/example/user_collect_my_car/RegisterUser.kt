@@ -33,7 +33,7 @@ class RegisterUser : AppCompatActivity() {
 
     var licenceImage: String? = null
 
-    var buttonID: Int? = null
+    var buttonID = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,10 +48,10 @@ class RegisterUser : AppCompatActivity() {
 
         }
 
-        licence_upload_button_register.setOnClickListener {
+        insurance_upload_button_register.setOnClickListener {
 
 
-            buttonID = licence_upload_button_register.id
+            buttonID = true
 
             Log.d("Register", "Button ID $buttonID")
 
@@ -84,7 +84,6 @@ class RegisterUser : AppCompatActivity() {
         ImagePicker.with(this)
             .crop().compress(1024).maxResultSize(1080, 1080).start()
 
-
     }
 
     private fun selectImage() {
@@ -106,9 +105,9 @@ class RegisterUser : AppCompatActivity() {
         when(resultCode){
             Activity.RESULT_OK -> {
 
-                if(buttonID == 2131362097){
+                if(buttonID){
 
-                    buttonID = 0
+                    buttonID = false
 
 
                     licenceFileUri = data?.data
@@ -149,21 +148,6 @@ class RegisterUser : AppCompatActivity() {
 
         }
 
-        /*if(resultCode == 1 && requestCode == Activity.RESULT_OK && data != null){
-
-            Log.d("MainActivity", "Photo was Selected 2")
-
-            val uri = data.data
-
-            val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
-
-            //val bitmapDrawable = BitmapDrawable(bitmap)
-            val bitmapDrawable = BitmapDrawable(this.resources,bitmap)
-            photo_button_user.setBackground(bitmapDrawable)
-
-        }*/
-
-
     }
 
 
@@ -190,14 +174,6 @@ class RegisterUser : AppCompatActivity() {
         model.carMake = carmake_editText_register.text.toString()
         model.carModel = carmodel_editText_register.text.toString()
         model.carColour = car_colour_editText_register.text.toString()
-
-        model.licenceSurname = licence_surname_editText_register.text.toString()
-        model.licenceFirstName = licence_firstname_editText_register.text.toString()
-        val licenceBOD = licence_dob_editText_register.text.toString()
-        val licenceIssueDate = licence_issue_editText_register.text.toString()
-        val licenceExpiryDate = licence_expiry_editText_register.text.toString()
-        val licenceDriverNumber = licence_driver_number_editText_register.text.toString()
-        model.licenceNumber = licence_number_editText_register.text.toString()
 
         model.insurer = insurance_name_editText_register.text.toString()
         model.insuranceType = insurance_cover_editText_register.text.toString()
@@ -246,62 +222,6 @@ class RegisterUser : AppCompatActivity() {
         else if(model.county!!.isEmpty()){
 
             Toast.makeText(this, "ERROR - Please Enter a County", Toast.LENGTH_SHORT).show()
-
-            return
-
-        }
-
-        else if(model.licenceSurname!!.isEmpty()){
-
-            Toast.makeText(this, "ERROR - Please Enter Licence Surname", Toast.LENGTH_SHORT).show()
-
-            return
-
-        }
-
-        else if(model.licenceFirstName!!.isEmpty()){
-
-            Toast.makeText(this, "ERROR - Please Enter Licence First Name", Toast.LENGTH_SHORT).show()
-
-            return
-
-        }
-
-        else if(licenceBOD.isEmpty()){
-
-            Toast.makeText(this, "ERROR - Please Enter Licence Date of Birth", Toast.LENGTH_SHORT).show()
-
-            return
-
-        }
-
-        else if(licenceIssueDate.isEmpty()){
-
-            Toast.makeText(this, "ERROR - Please Enter Licence Issue Date", Toast.LENGTH_SHORT).show()
-
-            return
-
-        }
-
-        else if(licenceExpiryDate.isEmpty()){
-
-            Toast.makeText(this, "ERROR - Please Enter Licence Expiry Date", Toast.LENGTH_SHORT).show()
-
-            return
-
-        }
-
-        else if(licenceDriverNumber!!.isEmpty()){
-
-            Toast.makeText(this, "ERROR - Please Enter Licence Driver Number", Toast.LENGTH_SHORT).show()
-
-            return
-
-        }
-
-        else if(model.licenceNumber!!.isEmpty()){
-
-            Toast.makeText(this, "ERROR - Please Enter Licence Number", Toast.LENGTH_SHORT).show()
 
             return
 
@@ -430,7 +350,7 @@ class RegisterUser : AppCompatActivity() {
 
             }
 
-        val ref2 = FirebaseStorage.getInstance().getReference("/licencedetails/$filename")
+        val ref2 = FirebaseStorage.getInstance().getReference("/insurancedetails/$filename")
 
         ref2.putFile(licenceFileUri!!)
             .addOnSuccessListener {
@@ -463,16 +383,18 @@ class RegisterUser : AppCompatActivity() {
 
     private fun saveLicenceDocument(profileImageUrla: String){
 
-/*        val model = UserModel()
-*//*
-        database = FirebaseDatabase.getInstance()
-        userInfoRef = database.getReference(Common.USER_INFO_REFERENCE)*//*
+      val model = UserModel()
 
-        model.licenceDocuments = profileImageUrl*/
+/*        database = FirebaseDatabase.getInstance()
+        userInfoRef = database.getReference(Common.USER_INFO_REFERENCE)*/
+
+        model.insuranceDocuments = profileImageUrla
 
         licenceImage = profileImageUrla
 
         Log.d("Main", "licenceImage : " + licenceImage)
+
+        Log.d("Main", "model.insuranceDocuments : " + model.insuranceDocuments)
 
 
 /*
@@ -491,15 +413,14 @@ class RegisterUser : AppCompatActivity() {
 
         if(licenceImage== null){
 
-            Toast.makeText(this, "ERROR - Please Upload Licence Details", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "ERROR - Please Upload Insurance Details", Toast.LENGTH_SHORT).show()
 
             return
-
         }
 
-        model.licenceDocuments = licenceImage
+        model.insuranceDocuments = licenceImage
 
-        Log.d("Main", "saveUserInfo licenceImage : " + model.licenceDocuments)
+        Log.d("Main", "saveUserInfo licenceImage : " + model.insuranceDocuments)
 
         model.image = profileImageUrl
         model.name = username_editText_register.text.toString()
@@ -514,13 +435,6 @@ class RegisterUser : AppCompatActivity() {
         model.carModel = carmodel_editText_register.text.toString()
         model.carColour = car_colour_editText_register.text.toString()
 
-        model.licenceSurname = licence_surname_editText_register.text.toString()
-        model.licenceFirstName = licence_firstname_editText_register.text.toString()
-        //model.licenceBOD = licence_dob_editText_register.text.toString().toInt()**********
-        model.licenceIssueDate = licence_issue_editText_register.text.toString().toInt()
-        model.licenceExpiryDate = licence_expiry_editText_register.text.toString().toInt()
-        model.licenceDriverNumber = licence_driver_number_editText_register.text.toString().toInt()
-        model.licenceNumber = licence_number_editText_register.text.toString()
 
         model.insurer = insurance_name_editText_register.text.toString()
         model.insuranceType = insurance_cover_editText_register.text.toString()
