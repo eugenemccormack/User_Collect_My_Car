@@ -1,20 +1,26 @@
 package com.example.user_collect_my_car
 
+import android.Manifest
 import android.animation.ValueAnimator
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.telephony.SmsManager
 import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.user_collect_my_car.Common.Common
@@ -84,6 +90,7 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
     private var next = 0
     private var start: LatLng ?= null
     private var end: LatLng ?= null
+    private var driverPhoneCall: String = ""
 
 
 
@@ -245,10 +252,14 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
                                                     txt_driver_name.setText(tripPlanModel!!.driverInfoModel!!.name)
 
+                                                    driverPhoneCall = tripPlanModel!!.driverInfoModel!!.phone.toString()
+
                                                     confirm_driver_layout.visibility = View.GONE
                                                     confirm_pickup_layout.visibility = View.GONE
 
                                                     driver_info_layout.visibility = View.VISIBLE
+
+
 
 
                                                 } catch (e: java.lang.Exception) {
@@ -282,6 +293,8 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                 })
 
     }
+
+
 
     private fun initDriverMoving(tripId: String, tripPlanModel: TripPlanModel) {
 
@@ -346,8 +359,8 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
                                 }
 
-                                blackPolylineOptions!!.color(R.color.dark_Blue) //Color.WHITE
-                                blackPolylineOptions!!.width(5f)
+                                blackPolylineOptions!!.color(R.color.blue) //Color.WHITE
+                                blackPolylineOptions!!.width(12f)
                                 blackPolylineOptions!!.startCap(SquareCap())
                                 blackPolylineOptions!!.jointType(JointType.ROUND)
                                 blackPolylineOptions!!.addAll(polylineList)
@@ -549,6 +562,29 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
         }
 
+        call_driver.setOnClickListener {
+
+          /*  //val smsManager = SmsManager.getDefault() as SmsManager
+            smsManager.sendTextMessage("driverPhoneCall", null, "sms message", null, null)*/
+
+
+ /*           val uri = Uri.parse(driverPhoneCall)
+            val intent = Intent(Intent.ACTION_SENDTO, uri)
+            intent.putExtra("sms_body", "Here goes your message...")
+            startActivity(it)*/
+            val dialIntent = Intent(Intent.ACTION_DIAL)
+            dialIntent.data = Uri.parse("tel:" + driverPhoneCall)
+            startActivity(dialIntent)
+
+        }
+
+/*        if (ActivityCompat.checkSelfPermission(this@RequestDriverActivity, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this@RequestDriverActivity, Manifest.permission.SEND_RESPOND_VIA_MESSAGE) != PackageManager.PERMISSION_GRANTED) {
+
+            Toast.makeText(this@RequestDriverActivity, getString(R.string.permission_require), Toast.LENGTH_SHORT).show()
+
+            return
+        }*/
+
 
 
     }
@@ -746,7 +782,7 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                         }
 
                         polylineOptions = PolylineOptions()
-                        polylineOptions!!.color(R.color.light_Blue)
+                        polylineOptions!!.color(R.color.blue)
                         polylineOptions!!.width(12f)
                         polylineOptions!!.startCap(SquareCap())
                         polylineOptions!!.jointType(JointType.ROUND)
@@ -754,8 +790,8 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                         greyPolyline = mMap.addPolyline(polylineOptions)
 
                         blackPolylineOptions = PolylineOptions()
-                        blackPolylineOptions!!.color(R.color.dark_Blue) //Color.WHITE
-                        blackPolylineOptions!!.width(5f)
+                        blackPolylineOptions!!.color(R.color.blue) //Color.WHITE
+                        blackPolylineOptions!!.width(12f)
                         blackPolylineOptions!!.startCap(SquareCap())
                         blackPolylineOptions!!.jointType(JointType.ROUND)
                         blackPolylineOptions!!.addAll(polylineList)

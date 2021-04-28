@@ -8,6 +8,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
@@ -68,6 +69,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_maps.*
 import kotlinx.android.synthetic.main.activity_navigation_drawer_user.*
 import kotlinx.android.synthetic.main.layout_bottom_sheet.*
+import kotlinx.android.synthetic.main.layout_driver_info.*
 import org.greenrobot.eventbus.EventBus
 import org.json.JSONObject
 import java.io.IOException
@@ -275,8 +277,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
         val navPhone = headerView.findViewById<android.view.View>(R.id.nav_phone) as TextView
         image_avatar = headerView.findViewById<android.view.View>(R.id.nav_imageView) as ImageView
 
-        navName.setText(Common.buildNavMessage())
-        navPhone.setText(Common.currentUser!!.phone)
+        navName.setText("Welcome")//Common.buildNavMessage())
+        navPhone.setText(Common.currentUser!!.name)
 
         if(Common.currentUser != null && Common.currentUser!!.image != null){
 
@@ -346,6 +348,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
         autocompleteSupportFragment = supportFragmentManager.findFragmentById(R.id.auto_complete) as AutocompleteSupportFragment
 
         //autocompleteSupportFragment.view?.setBackgroundResource(R.drawable.button_border)
+        autocompleteSupportFragment.view?.setBackgroundColor(Color.WHITE)
 
 
         autocompleteSupportFragment.setPlaceFields(Arrays.asList(Place.Field.ID,
@@ -1349,6 +1352,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
             bottomSheetDialog.dismiss()
 
+            select_drop_off.visibility = View.VISIBLE
+
         }
 
         bottomSheetDialog.setContentView(bottomSheetView)
@@ -1384,8 +1389,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
                                     )
                                     .title(
                                             Common.buildName(
-                                                    driverGeoModel.driverInfoModel!!.name + "     ",
-                                                    driverGeoModel.driverInfoModel!!.phone
+                                                    driverGeoModel.driverInfoModel!!.name
                                             )
                                     )
                                     .snippet(driverGeoModel!!.key!!)

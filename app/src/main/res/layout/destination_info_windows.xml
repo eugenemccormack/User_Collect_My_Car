@@ -14,7 +14,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/light_Blue"
             android:orientation="horizontal">
 
             <TextView
@@ -22,13 +22,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Destination"
+                android:textColor="@color/white"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20dp"/>
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/ic_baseline_navigate_next_24"/>
+                android:src="@drawable/ic_baseline_navigate_next_24_white"/>
 
         </LinearLayout>
 
@@ -36,10 +37,10 @@
     </androidx.cardview.widget.CardView>
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/ic_baseline_beenhere_24"/>
+        android:src="@drawable/ic_baseline_flag_24_red"/>
 
 
 

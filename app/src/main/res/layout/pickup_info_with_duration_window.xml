@@ -52,6 +52,6 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/ic_baseline_flag_24_blue"/>
+        android:src="@drawable/ic_baseline_flag_24_green"/>
 
 </LinearLayout>

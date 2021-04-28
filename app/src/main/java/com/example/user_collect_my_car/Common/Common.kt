@@ -37,13 +37,13 @@ object Common {
     val NOTI_BODY: String = "body"
     val NOTI_TITLE: String = "title"
 
-    fun buildNavMessage(): String {
+/*    fun buildNavMessage(): String {
 
         return StringBuilder("Welcome ")
                 .append(currentUser!!.name)
                 .toString()
 
-    }
+    }*/
 
 
     val TOKEN_REFERENCE: String = "Token"
@@ -125,9 +125,9 @@ object Common {
 
 
 
-    fun buildName(name: String?, phone: String?): String? {
+    fun buildName(name: String?): String? { //, phone: String?): String? {
 
-        return StringBuilder(name!!).append("").append(phone).toString()
+        return StringBuilder(name!!).toString()//.append("").append(phone).toString()
 
     }
 
