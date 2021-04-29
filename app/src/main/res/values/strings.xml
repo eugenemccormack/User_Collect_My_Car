@@ -38,6 +38,8 @@
     <string name="no_driver_selected">Please Select a Driver</string>
 
     <string name="selected_item">Selected item:</string>
+    <string name="distance">Distance</string>
+    <string name="time">Time</string>
 
     <string-array name="Languages">
         <item>Java</item>

@@ -838,9 +838,17 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
                         val duration = time.getString("text")
 
+                        val distance = legsObject.getJSONObject("distance")
+                        val distanceText = distance.getString("text")
+
                         val startAddress = legsObject.getString("start_address")
 
                         val endAddress = legsObject.getString("end_address")
+
+                        distance_confirm_driver.text = (distanceText)
+                        time_confirm_driver.text = duration
+
+
 
                         addOriginMarker(duration, startAddress)
 
