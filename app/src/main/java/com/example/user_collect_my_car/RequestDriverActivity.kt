@@ -205,8 +205,8 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                                                     }
 
                                                     blackPolylineOptions = PolylineOptions()
-                                                    blackPolylineOptions!!.color(R.color.dark_Blue) //Color.WHITE
-                                                    blackPolylineOptions!!.width(5f)
+                                                    blackPolylineOptions!!.color(R.color.blue) //Color.WHITE
+                                                    blackPolylineOptions!!.width(12f)
                                                     blackPolylineOptions!!.startCap(SquareCap())
                                                     blackPolylineOptions!!.jointType(JointType.ROUND)
                                                     blackPolylineOptions!!.addAll(polylineList)
