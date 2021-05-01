@@ -75,7 +75,7 @@ import org.json.JSONObject
 import java.io.IOException
 import java.util.*
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfoListener, GoogleMap.OnMarkerClickListener { //,GoogleMap.OnMarkerClickListener
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfoListener, GoogleMap.OnMarkerClickListener {
 
     private lateinit var database : FirebaseDatabase
     private lateinit var driverInfoRef : DatabaseReference
@@ -92,8 +92,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
     private lateinit var welcomeMessage: TextView
     private lateinit var autocompleteSupportFragment: AutocompleteSupportFragment
 
-    //private lateinit var placesClient: PlacesClient
-
     //Location
 
     private var locationRequest: LocationRequest ?= null
@@ -102,8 +100,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
     //Load Drivers
 
-    var distance = 1.0//10.0 //1.0
-    val LIMIT_RANGE = 10.0//10.0//10.0//30.0 //10.0
+    var distance = 1.0
+    val LIMIT_RANGE = 10.0
     var previousLocation: Location? = null
     var currentLocation:Location? = null
 
@@ -156,33 +154,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
             isNextLaunch = true
 
-        //init()
-
-        // addDriverMarker()
-
-        //recreate()
-        //loadAvailableDrivers()
-
     }
-
-
-
-
-
-
-
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
-        //setContentView(R.layout.activity_navigation_drawer_user)
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        /*     val mapFragment = supportFragmentManager
-                 .findFragmentById(R.id.map) as SupportMapFragment
-             mapFragment.getMapAsync(this)*/
 
         toggle = ActionBarDrawerToggle(this, drawerLayoutMaps, R.string.open, R.string.closed)
 
@@ -286,47 +262,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
         }
 
-/*       locationButton.setOnClickListener {
-
-           // val intent = Intent(this, NavigationDrawerUser::class.java)
-
-            //intent.putExtra(MESSGAE, email)
-
-          //  startActivity(intent)
-
-        }*/
 
         init()
-
-        //  initViews()
-
-
 
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
-
-
-
-
-        //init()
-
-
-
-    }
-
-
-
-    private fun initViews() {
-
-
-
-        //slidingUpPanelLayout = findViewById(R.id.activityMaps) as SlidingUpPanelLayout
-
-        //welcomeMessage = findViewById(R.id.welcome) as TextView
-
-        //Common.setWelcomeMessage(welcome_txt)
 
     }
 
@@ -360,8 +301,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
             override fun onPlaceSelected(p0: Place) {
 
-                //Toast.makeText(this@MapsActivity, "" + p0.latLng, Toast.LENGTH_SHORT).show()
-
                 if (ActivityCompat.checkSelfPermission(this@MapsActivity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this@MapsActivity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
                     Toast.makeText(this@MapsActivity, getString(R.string.permission_require), Toast.LENGTH_SHORT).show()
@@ -384,7 +323,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
             override fun onError(p0: Status) {
 
-                Toast.makeText(this@MapsActivity, p0.statusMessage, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MapsActivity, "Please Select A Drop Off Location", Toast.LENGTH_SHORT).show()
 
             }
 
@@ -416,71 +355,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
         buildLocationCallback()
 
         updateLocation()
-
-
-
-
-
-
-/*        val headerView = navViewMaps.getHeaderView(0)
-        val navName = headerView.findViewById<android.view.View>(R.id.nav_name) as TextView
-        val navPhone = headerView.findViewById<android.view.View>(R.id.nav_phone) as TextView
-
-        navName.setText(Common.buildNavMessage())
-        navPhone.setText(Common.currentUser!!.phone)*/
-
-        //navName.text = "TEST"
-
-
-        /*      FirebaseDatabase.getInstance().getReference(Common.USER_INFO_REFERENCE)
-                      .addListenerForSingleValueEvent(object: ValueEventListener{
-
-                          override fun onDataChange(p0: DataSnapshot) {
-
-                              if(p0.exists()){
-
-                                  val model = p0.getValue(UserModel::class.java)
-
-                                  if (model != null) {
-
-                                      navName.text = model.email
-                                  }
-
-                                  else{
-
-                                      navName.text = "CRASH"
-
-                                  }
-
-                              }
-
-                              *//*if(p0.hasChildren()){
-
-                            driverGeoModel.driverInfoModel = (p0.getValue(DriverInfoModel::class.java))
-
-                            iFirebaseDriverInfoListener.onDriverInfoLoadSuccess(driverGeoModel)
-
-                        }
-                        else{
-
-                            iFirebaseFailedListener.onFirebaseFailed(getString(R.string.key_not_found) + driverGeoModel.key)
-
-                        }*//*
-
-                    }
-
-                    override fun onCancelled(p0: DatabaseError) {
-
-
-
-                    }
-
-
-                })*/
-
-
-
-
 
         loadAvailableDrivers();
 
@@ -530,10 +404,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
                     )
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(newPos, 18f))
 
-                    /*   val saveCityName = cityName // Save Old City Name to Variable
-
-                       cityName = LocationUtils.getAddressFromLocation(requireContext(), location)*/
-
                     //If User has Changed Location, Calculate and Load Driver Again
 
                     if(new)
@@ -561,55 +431,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
                         Log.d("MapsActivityTest", "LimitRange")
 
                     loadAvailableDrivers();
-
-                    /* //Load all Driver in the City
-
-                     val geoCoder = Geocoder(this@MapsActivity, Locale.getDefault())
-
-                     val addressList : List<Address>?
-
-                     try {
-
-                         addressList = geoCoder.getFromLocation(locationResult.lastLocation.latitude,
-                             locationResult.lastLocation.longitude, 1)
-
-                         val cityName = addressList[0].subLocality
-
-                         driversLocationRef = FirebaseDatabase.getInstance().getReference(Common.DRIVERS_LOCATION_REFERENCE).child(cityName)
-
-                         currentUserRef =driversLocationRef.child(FirebaseAuth.getInstance().currentUser!!.uid)
-
-                         geofire = GeoFire(driversLocationRef)
-
-                         //Update Location
-
-                         geofire.setLocation(
-
-                             FirebaseAuth.getInstance().currentUser!!.uid,
-                             GeoLocation(locationResult.lastLocation.latitude, locationResult.lastLocation.longitude)
-                         ){key: String?, error: DatabaseError? ->
-
-                             if(error != null)
-
-                                 Snackbar.make(mapFragment.requireView(), error.message, Snackbar.LENGTH_LONG).show()
-
-                             else
-
-                             //Snackbar.make(mapFragment.requireView(), "Your Online", Snackbar.LENGTH_SHORT).show()
-                                 Toast.makeText(this@MapsActivity, "Your Online", Toast.LENGTH_SHORT).show()
-
-                         }
-
-                         registerOnlineSystem()
-                     }
-
-                     catch (e: IOException){
-
-                         Toast.makeText(this@MapsActivity, e.message, Toast.LENGTH_SHORT).show()
-
-                     }
-     */
-
 
                 }
             }
@@ -686,11 +507,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
                     //Load All Driver in City
 
-                    //Load all Driver in the City
-
                     val geoCoder = Geocoder(this@MapsActivity, Locale.getDefault())
 
-                    val addressList : List<Address>?// = ArrayList()
+                    val addressList : List<Address>?
 
                     try {
 
@@ -702,7 +521,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
                         if(addressList.size > 0)
 
-                            cityName = addressList[0].countryName//adminArea//locality//subAdminArea//subLocality
+                            cityName = addressList[0].countryName
 
                         //Query
 
@@ -710,8 +529,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
                         val driver_Location_Ref = FirebaseDatabase.getInstance().getReference(
                                 Common.DRIVERS_LOCATION_REFERENCE
                         ).child(cityName)
-
-                        //currentUserRef =driversLocationRef.child(FirebaseAuth.getInstance().currentUser!!.uid)
 
                         val gf = GeoFire(driver_Location_Ref)
 
@@ -729,17 +546,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
                             override fun onKeyEntered(key: String?, location: GeoLocation?) {
 
-                                // Common.driversFound.add(DriverGeoModel(key!!, location!!))
                                 if (!Common.driversFound.containsKey(key)) {
 
-
-
                                     Common.driversFound[key!!] = DriverGeoModel(key, location)
-
-
-
                                 }
-
                             }
 
                             override fun onKeyExited(key: String?) {
@@ -763,7 +573,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
                                     addDriverMarker()
 
                                 }
-
                             }
 
                             override fun onGeoQueryError(error: DatabaseError?) {
@@ -840,26 +649,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
                         })
 
-                        /* //Update Location
-
-                         geofire.setLocation(
-
-                             FirebaseAuth.getInstance().currentUser!!.uid,
-                             GeoLocation(locationResult.lastLocation.latitude, locationResult.lastLocation.longitude)
-                         ){key: String?, error: DatabaseError? ->
-
-                             if(error != null)
-
-                                 Snackbar.make(mapFragment.requireView(), error.message, Snackbar.LENGTH_LONG).show()
-
-                             else
-
-                             //Snackbar.make(mapFragment.requireView(), "Your Online", Snackbar.LENGTH_SHORT).show()
-                                 Toast.makeText(this@MapsActivity, "Your Online", Toast.LENGTH_SHORT).show()
-
-                         }
-
-                         registerOnlineSystem()*/
                     }
 
                     catch (e: IOException){
@@ -869,12 +658,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
                                 getString(R.string.permission_require),
                                 Toast.LENGTH_SHORT
                         ).show()
-
                     }
-
-
-
-
                 }
     }
 
@@ -1008,15 +792,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
         }
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap!!
 
@@ -1081,104 +856,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
                         updateLocation()
 
-/*                    mMap.setOnMarkerClickListener { marker ->
-                        if (marker.isInfoWindowShown) {
-
-
-
-                            marker.hideInfoWindow()
-                        } else {
-                            marker.showInfoWindow()
-
-
-                            Toast.makeText(this@MapsActivity, driverGeoModel.driverInfoModel!!.name + "  " +
-                                    driverGeoModel.driverInfoModel!!.phone, Toast.LENGTH_SHORT).show()
-
-                            Toast.makeText(this@MapsActivity,  driverGeoModel!!.key!!, Toast.LENGTH_SHORT).show()
-
-                        }
-                        true
-                    }*/
-
-
-
-
-/*                    mMap.setOnMarkerClickListener { marker ->
-                        if (marker.isInfoWindowShown) {
-
-
-//
-//                            Toast.makeText(this@MapsActivity, driverGeoModel.driverInfoModel!!.name + "  " +
-//                                    driverGeoModel.driverInfoModel!!.phone, Toast.LENGTH_SHORT).show()
-//
-//                            Toast.makeText(this@MapsActivity,  driverGeoModel!!.key!!, Toast.LENGTH_SHORT).show()
-                            marker.hideInfoWindow()
-                        } else {
-                            marker.showInfoWindow()
-
-                            //   findDriver(target)
-
-
-*//*                                //.child(event.tripId)
-                                FirebaseDatabase.getInstance().getReference(Common.TRIP)
-                                        .addListenerForSingleValueEvent(object : ValueEventListener{
-
-                                            override fun onDataChange(snapshot: DataSnapshot) {
-
-                                                if(snapshot.exists()){
-
-                                                    val tripPlanModel = snapshot.getValue(TripPlanModel::class.java)
-                                                    //mMap.clear()
-
-
-
-                                                }
-
-
-
-                                            }
-
-                                            override fun onCancelled(error: DatabaseError) {
-
-                                                Toast.makeText(this@MapsActivity, error.message , Toast.LENGTH_LONG ).show()
-
-                                            }
-
-
-                                        })*//*
-
-
-                            //intent = Intent(this@MapsActivity, NavigationDrawerUser::class.java)
-
-                            //  startActivity(intent)
-                        }
-                        true
-                    }*/
-
-
                     }
-
-/*                private fun findDriver(target: LatLng?){
-
-                    if(Common.driversFound.size > 0){
-
-                        val currentUserLocation = Location("")
-
-                        currentUserLocation.latitude = target!!.latitude
-                        currentUserLocation.longitude = target!!.longitude
-
-                        val driverLocation = Location("")
-
-                        driverLocation.latitude = Common.driversFound!!.geoLocation!!.latitude
-                        driverLocation.longitude = target!!.longitude
-
-
-                    }
-
-
-
-
-                }*/
 
                     override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
 
@@ -1197,7 +875,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
                     }
 
-
                 })
                 .check()
 
@@ -1205,14 +882,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
         mMap.uiSettings.isZoomControlsEnabled = true
 
-
-/*        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))*/
     }
 
-/*    *//** Called when the user clicks a marker.  */
     override fun onMarkerClick(marker: Marker): Boolean {
 
         driverKey = marker.snippet.toString()
@@ -1221,60 +892,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
         getDriverFromFirebase()
 
-
-/*       if (marker.isInfoWindowShown) {
-
-            marker.hideInfoWindow()
-        } else {
-            marker.showInfoWindow()
-
-        }*/
-
-
-        //  lateinit var driverGeoModel: DriverGeoModel
-
-        //  var store: String? = ""
-
-        // Retrieve the data from the marker.
-        // val clickCount = marker.tag as? Int
-
-        // Check if a click count was set, then display the click count.
-        /*   clickCount?.let {
-               val newClickCount = it + 1
-               marker.tag = newClickCount
-               Toast.makeText(this, "${marker.title} " + "${marker.snippet} " + "${marker.id} ", Toast.LENGTH_SHORT).show()
-   */
-
-/*        val intent = Intent(this, ViewDriverInfo::class.java)//Removed for Bottom Dialog Sheet
-
-        intent.putExtra(MESSGAE, marker.snippet)
-
-        startActivity(intent)*/
-
-        //marker.snippet = ""
-
-        // driverKeySelect = ""
-
-/*            if (!Common.markerList.containsKey(driverGeoModel!!.key)) {
-
-                Common.markerList.put(driverGeoModel!!.key!!, store)
-
-            }
-            //}
-
-            // Return false to indicate that we have not consumed the event and that we wish
-            // for the default behavior to occur (which is for the camera to move such that the
-            // marker is centered and for the marker's info window to open, if it has one).
-            return false
-        }*/
         return false
     }
 
     private fun getDriverFromFirebase(){
 
         Log.d("ViewDriverInfo", "getUserFromFirebase")
-
-        // var driverKey = intent.getStringExtra(MapsActivity.MESSGAE)
 
         database = FirebaseDatabase.getInstance()
         driverInfoRef = database.getReference(Common.DRIVER_INFO_REFERENCE)
@@ -1301,11 +924,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
                             Toast.makeText(this@MapsActivity, p0.message, Toast.LENGTH_SHORT).show()
 
                         }
-
-
                     })
         }
-
     }
 
     private fun loadDriverInfo(model: DriverInfoModel?) {
@@ -1330,9 +950,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
         driver_Email2.text = Common.selectedDriver!!.email
         driver_Phone2.text = Common.selectedDriver!!.phone
 
-        //Log.d("ViewDriverInfo",  "Driver Name " + Common.selectedDriver!!.name )
-        //Log.d("ViewDriverInfo",  "Driver Email " + Common.selectedDriver!!.email )
-        //Log.d("ViewDriverInfo",  "Driver Phone " + Common.selectedDriver!!.phone )
 
       if(Common.selectedDriver != null && Common.selectedDriver!!.image != null){
 
@@ -1341,8 +958,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
        }
 
         bottomSheetView.findViewById<View>(R.id.selectDriver).setOnClickListener {
-
-            //Toast.makeText(this@MapsActivity, "Driver Selected", Toast.LENGTH_LONG)
 
             Common.selectedDriverKey = driverKey
 
@@ -1358,13 +973,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
         bottomSheetDialog.setContentView(bottomSheetView)
         bottomSheetDialog.show()
-
-
-
-
-
-
-
     }
 
     //Driver Goes Offline
@@ -1402,37 +1010,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
             mMap.setInfoWindowAdapter(CustomInfoWindowForGoogleMap(this))
             mMap.setOnMarkerClickListener(this@MapsActivity)
 
-
-
-            //driverGeoModel.driverInfoModel!!.phone,
-
-
-/*            // Set a listener for marker click.
-            mMap.setOnMarkerClickListener(this@MapsActivity)
-
-            locationButton.setOnClickListener {
-
-                Toast.makeText(this@MapsActivity, driverGeoModel.driverInfoModel!!.name + "  " +
-                        driverGeoModel.driverInfoModel!!.phone, Toast.LENGTH_SHORT).show()
-
-                Toast.makeText(this@MapsActivity,  driverGeoModel!!.key!!, Toast.LENGTH_SHORT).show()
-
-
-              *//*  driverGeoModel.driverInfoModel!!.name + "     ",
-                driverGeoModel.driverInfoModel!!.phone*//*
-
-                // val intent = Intent(this, NavigationDrawerUser::class.java)
-
-                //intent.putExtra(MESSGAE, email)
-
-                //  startActivity(intent)
-
-            }
-
-            Log.d("MapsActivityTest", "PlaceMarker")*/
         }
-
-
 
         if(!TextUtils.isEmpty(cityName)){
 
@@ -1443,17 +1021,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
                     .child(cityName)
                     .child(driverGeoModel!!.key!!)
 
-            //Log.d("MapsActivityTest", "Location From Database Received" + driverLocation)
-
             driverLocation.addValueEventListener(object : ValueEventListener {
 
                 override fun onDataChange(p0: DataSnapshot) {
 
-                    //   Log.d("MapsActivityTest", "onDataChange")
-
                     if (!p0.hasChildren()) {
-
-                        //   Log.d("MapsActivityTest", "!p0.hasChildren()")
 
                         if (Common.markerList[driverGeoModel!!.key!!] != null) {
 
@@ -1527,23 +1099,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
                             } else {
 
                                 //First Location Init
-
                                 Log.d("MapsActivityTest", "else statement ")
-                                Common.driversSubscribe.put(
-                                        driverGeoModel.key!!,
-                                        animationModel
-                                )
-
+                                Common.driversSubscribe.put(driverGeoModel.key!!,animationModel)
                             }
-
                         }
-
-
                     }
-
-
-
-
                 }
 
                 override fun onCancelled(p0: DatabaseError) {
@@ -1572,7 +1132,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
         if(!newData.isRun){
 
             //Request API
-            //getString(R.string.google_api_key)
 
             Log.d("MapsActivityTest", "Request API")
 
@@ -1605,10 +1164,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
                             //Moving Object
 
                             newData.handler =  Handler(Looper.getMainLooper())
-
-                            /* Handler(Looper.getMainLooper()).postDelayed({
-                                 // Your Code
-                             }, 3000)*/
 
                             newData.index = -1
 
@@ -1698,8 +1253,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
             return true
 
         }
-
-
 
         return super.onOptionsItemSelected(item)
     }

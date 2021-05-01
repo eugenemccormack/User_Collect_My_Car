@@ -87,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="@string/time"
+                android:text="@string/estimated_amount"
                 android:textColor="@color/dark_Blue"
                 android:textSize="16sp"/>
 
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_gravity="center_vertical"
-                android:text="5 Minutes"
+                android:text="€2.00"
                 android:textColor="@color/dark_Blue"
                 android:textSize="16sp"/>
 

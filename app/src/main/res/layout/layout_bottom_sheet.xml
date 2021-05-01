@@ -58,8 +58,14 @@
                 android:gravity="center"
                 android:text="Driver Name"
                 android:textColor="@color/dark_Blue"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/light_Blue"/>
 
             <TextView
                 android:id="@+id/driver_Email2"
@@ -68,8 +74,14 @@
                 android:text="Driver Email"
                 android:gravity="center"
                 android:textColor="@color/dark_Blue"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 android:textStyle="bold"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/light_Blue"/>
 
             <TextView
                 android:id="@+id/driver_Phone2"
@@ -78,7 +90,7 @@
                 android:text="Driver Phone"
                 android:gravity="center"
                 android:textColor="@color/dark_Blue"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 android:textStyle="bold"/>
 
 
@@ -104,20 +116,33 @@
         android:orientation="horizontal"
         android:padding="5dp">
 
-        <ImageView
+
+<!--        <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="10dp"
-            android:src="@drawable/ic_baseline_star_24"/>
+            android:src="@drawable/ic_baseline_star_24"/>-->
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:text="Rating"
             android:textColor="@color/white"
-            android:textSize="15sp"/>
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/txt_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_baseline_star_24"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:text="4"
+            android:textSize="20sp"
+            android:textColor="@color/white" />
+
 
     </LinearLayout>
 

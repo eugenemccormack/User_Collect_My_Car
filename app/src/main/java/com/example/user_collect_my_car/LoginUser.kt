@@ -79,31 +79,9 @@ class LoginUser : AppCompatActivity() {
 
                 Toast.makeText(this, "Successfully Signed in", Toast.LENGTH_SHORT).show()
 
-              /*  FirebaseInstanceId.getInstance().instanceId
-                    .addOnFailureListener { e->
 
-
-                        Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
-
-                    }
-
-                    .addOnSuccessListener { instanceIdResult ->
-
-
-                        Log.d("TOKEN", instanceIdResult.token)
-                        UserUtils.updateToken(this@LoginUser, instanceIdResult.token)
-
-
-
-                    }*/
-
-                //getUserFromFirebase()
                 firebaseAuth.addAuthStateListener(listener)
-               /* val intent = Intent(this, MapsActivity::class.java)
 
-                //intent.putExtra(MESSGAE, email)
-
-                startActivity(intent)*/
 
             }
 

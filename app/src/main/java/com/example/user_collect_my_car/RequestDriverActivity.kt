@@ -251,6 +251,7 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                                                             .into(driver_image)
 
                                                     txt_driver_name.setText(tripPlanModel!!.driverInfoModel!!.name)
+                                                    txt_car_number.setText(tripPlanModel!!.driverInfoModel!!.licenceNumber)
 
                                                     driverPhoneCall = tripPlanModel!!.driverInfoModel!!.phone.toString()
 
@@ -846,7 +847,7 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                         val endAddress = legsObject.getString("end_address")
 
                         distance_confirm_driver.text = (distanceText)
-                        time_confirm_driver.text = duration
+                        //time_confirm_driver.text = duration
 
 
 

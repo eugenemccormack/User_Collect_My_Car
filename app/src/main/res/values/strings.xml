@@ -40,6 +40,7 @@
     <string name="selected_item">Selected item:</string>
     <string name="distance">Distance</string>
     <string name="time">Time</string>
+    <string name="estimated_amount">Estimated Amount</string>
 
     <string-array name="Languages">
         <item>Java</item>

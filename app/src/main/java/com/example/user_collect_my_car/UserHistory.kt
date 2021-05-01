@@ -150,6 +150,7 @@ class UserHistory: AppCompatActivity() {
         driver_name_history.text = Common.collectionInfo!!.driverInfoModel!!.name
         driver_email_history.text = Common.collectionInfo!!.driverInfoModel!!.email
         driver_phone_history.text = Common.collectionInfo!!.driverInfoModel!!.phone
+        driver_price_history.text = "€2.00"
 
 /*        val geoCoder = Geocoder(this@UserHistory, Locale.getDefault())
 
