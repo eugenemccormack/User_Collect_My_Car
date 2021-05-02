@@ -45,6 +45,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_request_driver.*
+import kotlinx.android.synthetic.main.activity_user_history.*
 import kotlinx.android.synthetic.main.layout_confirm_driver.*
 import kotlinx.android.synthetic.main.layout_confirm_pickup.*
 import kotlinx.android.synthetic.main.layout_driver_info.*
@@ -729,15 +730,6 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
@@ -791,7 +783,7 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                         greyPolyline = mMap.addPolyline(polylineOptions)
 
                         blackPolylineOptions = PolylineOptions()
-                        blackPolylineOptions!!.color(R.color.blue) //Color.WHITE
+                        blackPolylineOptions!!.color(R.color.blue)
                         blackPolylineOptions!!.width(12f)
                         blackPolylineOptions!!.startCap(SquareCap())
                         blackPolylineOptions!!.jointType(JointType.ROUND)
@@ -838,16 +830,43 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                         val time = legsObject.getJSONObject("duration")
 
                         val duration = time.getString("text")
+                        val durationValue = time.getInt("value")
 
                         val distance = legsObject.getJSONObject("distance")
                         val distanceText = distance.getString("text")
+                        val distanceValue = distance.getInt("value")
 
                         val startAddress = legsObject.getString("start_address")
 
                         val endAddress = legsObject.getString("end_address")
 
+                        val startLocation = legsObject.getJSONObject("start_location")
+
+                        val endLocation = legsObject.getJSONObject("end_location")
+
                         distance_confirm_driver.text = (distanceText)
-                        //time_confirm_driver.text = duration
+
+
+                        selectedPlaceEvent.originAddress = startAddress
+                        selectedPlaceEvent.origin = LatLng(startLocation.getDouble("lat"), startLocation.getDouble("lng"))
+                        selectedPlaceEvent.destinationAddress = endAddress
+                        selectedPlaceEvent.destination = LatLng(endLocation.getDouble("lat"), endLocation.getDouble("lng"))
+                        selectedPlaceEvent.durationValue = durationValue
+                        selectedPlaceEvent.distanceValue = distanceValue
+                        selectedPlaceEvent.durationText = duration
+                        selectedPlaceEvent.distanceText = distanceText
+
+                        val totalPrice = Common.calculateTotalPrice(distanceValue)
+
+                        selectedPlaceEvent.totalFee = (totalPrice)
+
+                        val total: Double = totalPrice
+
+                        val round = Math.round(total * 100.0) / 100.0
+
+                        amount_confirm_driver.text = "€"+round.toString()
+
+                        //amount_confirm_driver.text = StringBuilder("€").append(totalPrice)
 
 
 

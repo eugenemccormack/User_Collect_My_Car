@@ -315,7 +315,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
 
                     startActivity(Intent(this@MapsActivity, RequestDriverActivity::class.java))
 
-                    EventBus.getDefault().postSticky(SelectedPlaceEvent(origin, destination, p0!!.address!!))
+                    EventBus.getDefault().postSticky(SelectedPlaceEvent(origin, destination, "", p0!!.address!!))
 
                 }
 

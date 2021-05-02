@@ -25,6 +25,12 @@ import com.google.maps.android.ui.IconGenerator
 
 object Common {
 
+    val BASE_PRICE: Double = 2.00
+    val USER_TOTAL: String = "TotalUser"
+    val USER_DURATION_VALUE: String = "DurationUserValue"
+    val USER_DURATION_TEXT: String = "DurationUser"
+    val USER_DISTANCE_VALUE: String = "DistanceUserValue"
+    val USER_DISTANCE_TEXT: String = "DistanceUser"
     val USER_REQUEST_COMPLETE_TRIP: String = "RequestCompleteTripToUser"
     val REQUEST_DRIVER_DECLINE_AND_REMOVE_TRIP: String = "DeclineAndRemoveTrip"
     val DESTINATION_LOCATION: String = "DestinationLocation"
@@ -236,6 +242,18 @@ object Common {
     private fun getNumberFromText(s: String): String {
 
         return s.substring(0, s.indexOf(" "))
+
+    }
+
+    fun calculateTotalPrice(meters: Int): Double {
+
+        return if(meters <= 1000)
+
+            BASE_PRICE
+
+        else
+
+            (BASE_PRICE/1000)*meters
 
     }
 

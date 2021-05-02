@@ -57,10 +57,6 @@ object UserUtils {
             .addListenerForSingleValueEvent(object :ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
 
-                    Log.d("RequestDriverActivity", "SnapShot Exists" +  FirebaseDatabase.getInstance()
-                            .getReference(Common.TOKEN_REFERENCE)
-                            .child(foundDriver!!.key!!))
-
                     if (snapshot.exists()){
 
                         val tokenModel = snapshot.getValue(TokenModel::class.java)
@@ -70,19 +66,29 @@ object UserUtils {
                         notificationData.put(Common.NOTI_TITLE, Common.REQUEST_DRIVER_TITLE)
                         notificationData.put(Common.NOTI_BODY, "This Message is for the Requested Driver Action")
                         notificationData.put(Common.RIDER_KEY, FirebaseAuth.getInstance().currentUser!!.uid)
-                        notificationData.put(Common.PICKUP_LOCATION_STRING, selectedPlaceEvent.originString)
+                        notificationData.put(Common.PICKUP_LOCATION_STRING, selectedPlaceEvent.originAddress)
                         notificationData.put(Common.PICKUP_LOCATION, StringBuilder()
                             .append(selectedPlaceEvent.origin.latitude)
                             .append(",")
                             .append(selectedPlaceEvent.origin.longitude)
                             .toString())
 
-                        notificationData.put(Common.DESTINATION_LOCATION_STRING, selectedPlaceEvent.address)
+                        notificationData.put(Common.DESTINATION_LOCATION_STRING, selectedPlaceEvent.destinationAddress)
+
                         notificationData.put(Common.DESTINATION_LOCATION, StringBuilder()
                                 .append(selectedPlaceEvent.destination.latitude)
                                 .append(",")
                                 .append(selectedPlaceEvent.destination.longitude)
                                 .toString())
+
+                        Log.d("UserUtils", "SnapShot Exists" + selectedPlaceEvent.destination.latitude)
+
+
+                        notificationData[Common.USER_DISTANCE_TEXT] = selectedPlaceEvent.distanceText!!
+                        notificationData[Common.USER_DISTANCE_VALUE] = selectedPlaceEvent.distanceValue.toString()
+                        notificationData[Common.USER_DURATION_TEXT] = selectedPlaceEvent.durationText!!
+                        notificationData[Common.USER_DURATION_VALUE] = selectedPlaceEvent.durationValue.toString()
+                        notificationData[Common.USER_TOTAL] = selectedPlaceEvent.totalFee.toString()
 
                         val fcmSendData = FCMSendData(tokenModel!!.token, notificationData)
 
