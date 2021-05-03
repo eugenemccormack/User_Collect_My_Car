@@ -6,7 +6,6 @@ class DriverInfoModel {
     var phone:String? = null
     var email:String? = null
     var image:String?= null
-    var photos:String= ""
     var rating = 0
 
     var licenceSurname:String? = null

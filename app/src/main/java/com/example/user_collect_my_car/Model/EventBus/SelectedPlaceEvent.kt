@@ -9,7 +9,7 @@ class SelectedPlaceEvent(var origin: LatLng, var destination: LatLng, var origin
     var durationText:String?=""
     var distanceValue:Int = 0
     var durationValue: Int = 0
-    var totalFee: Double = 0.0
+    var estimatedPrice: Double = 0.0
 
     val originString: String
 

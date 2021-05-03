@@ -88,7 +88,7 @@ object UserUtils {
                         notificationData[Common.USER_DISTANCE_VALUE] = selectedPlaceEvent.distanceValue.toString()
                         notificationData[Common.USER_DURATION_TEXT] = selectedPlaceEvent.durationText!!
                         notificationData[Common.USER_DURATION_VALUE] = selectedPlaceEvent.durationValue.toString()
-                        notificationData[Common.USER_TOTAL] = selectedPlaceEvent.totalFee.toString()
+                        notificationData[Common.USER_TOTAL] = selectedPlaceEvent.estimatedPrice.toString()
 
                         val fcmSendData = FCMSendData(tokenModel!!.token, notificationData)
 

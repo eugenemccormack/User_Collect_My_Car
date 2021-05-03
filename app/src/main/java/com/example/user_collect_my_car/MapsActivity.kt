@@ -124,6 +124,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
     private lateinit var driver_Name2: TextView
     private lateinit var driver_Email2: TextView
     private lateinit var driver_Phone2: TextView
+    private lateinit var driver_rating2: TextView
 
     companion object{
 
@@ -945,10 +946,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, FirebaseDriverInfo
         driver_Name2 = bottomSheetView.findViewById<View>(R.id.driver_Name2) as TextView
         driver_Email2 = bottomSheetView.findViewById<View>(R.id.driver_Email2) as TextView
         driver_Phone2 = bottomSheetView.findViewById<View>(R.id.driver_Phone2) as TextView
+        driver_rating2 = bottomSheetView.findViewById<View>(R.id.txt_rating) as TextView
 
         driver_Name2.text = Common.selectedDriver!!.name
         driver_Email2.text = Common.selectedDriver!!.email
         driver_Phone2.text = Common.selectedDriver!!.phone
+        driver_rating2.text = Common.selectedDriver!!.rating.toString()
+
 
 
       if(Common.selectedDriver != null && Common.selectedDriver!!.image != null){

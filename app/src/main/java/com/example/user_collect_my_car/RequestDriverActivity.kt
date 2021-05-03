@@ -206,11 +206,11 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                                                     }
 
                                                     blackPolylineOptions = PolylineOptions()
-                                                    blackPolylineOptions!!.color(R.color.blue) //Color.WHITE
-                                                    blackPolylineOptions!!.width(12f)
-                                                    blackPolylineOptions!!.startCap(SquareCap())
-                                                    blackPolylineOptions!!.jointType(JointType.ROUND)
-                                                    blackPolylineOptions!!.addAll(polylineList)
+                                                    blackPolylineOptions.color(R.color.blue) //Color.WHITE
+                                                    blackPolylineOptions.width(12f)
+                                                    blackPolylineOptions.startCap(SquareCap())
+                                                    blackPolylineOptions.jointType(JointType.ROUND)
+                                                    blackPolylineOptions.addAll(polylineList)
                                                     blackPolyline = mMap.addPolyline(blackPolylineOptions)
 
                                                     //Add Car Icon for Origin
@@ -253,6 +253,7 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
                                                     txt_driver_name.setText(tripPlanModel!!.driverInfoModel!!.name)
                                                     txt_car_number.setText(tripPlanModel!!.driverInfoModel!!.licenceNumber)
+                                                    txt_rating.setText(tripPlanModel!!.driverInfoModel!!.rating)
 
                                                     driverPhoneCall = tripPlanModel!!.driverInfoModel!!.phone.toString()
 
@@ -858,7 +859,7 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
                         val totalPrice = Common.calculateTotalPrice(distanceValue)
 
-                        selectedPlaceEvent.totalFee = (totalPrice)
+                        selectedPlaceEvent.estimatedPrice = (totalPrice)
 
                         val total: Double = totalPrice
 

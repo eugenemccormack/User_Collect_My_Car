@@ -44,6 +44,24 @@ class TripPlanModel {
 
     var collectionNumber: String? = null
 
+    var distanceValue = 0
+
+    var durationValue = 0
+
+    var estimatedPrice = 0.0
+
+    var brakingCount = 0
+
+    var newDriverRating = 1
+
+    var oldDriverRating = 1
+
+    var distanceText: String?=""
+
+    var durationText:String?=""
+
+    var tripTime: String = ""
+
 
 
 
