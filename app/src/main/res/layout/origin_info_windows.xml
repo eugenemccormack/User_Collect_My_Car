@@ -37,8 +37,6 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"/>
 
-
-
         </LinearLayout>
 
             <TextView
@@ -57,7 +55,6 @@
                 android:src="@drawable/ic_baseline_navigate_next_24_white"/>
 
         </LinearLayout>
-
 
     </androidx.cardview.widget.CardView>
 

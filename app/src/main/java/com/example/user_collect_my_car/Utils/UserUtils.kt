@@ -40,7 +40,6 @@ object UserUtils {
             }
 
             .addOnSuccessListener {  }
-
     }
 
     fun sendRequestToDriver(context: Context, mainLayout: RelativeLayout?, foundDriver: DriverGeoModel?, selectedPlaceEvent: SelectedPlaceEvent) {
@@ -48,8 +47,6 @@ object UserUtils {
         val compositeDisposable = CompositeDisposable()
 
         val ifcmService = RetroFitFCMClient.instance!!.create(IFCMService::class.java)
-
-        //Get Token
 
         FirebaseDatabase.getInstance()
             .getReference(Common.TOKEN_REFERENCE)
@@ -81,9 +78,6 @@ object UserUtils {
                                 .append(selectedPlaceEvent.destination.longitude)
                                 .toString())
 
-                        Log.d("UserUtils", "SnapShot Exists" + selectedPlaceEvent.destination.latitude)
-
-
                         notificationData[Common.USER_DISTANCE_TEXT] = selectedPlaceEvent.distanceText!!
                         notificationData[Common.USER_DISTANCE_VALUE] = selectedPlaceEvent.distanceValue.toString()
                         notificationData[Common.USER_DURATION_TEXT] = selectedPlaceEvent.durationText!!
@@ -105,17 +99,13 @@ object UserUtils {
 
                                 }
 
-
                             },{t: Throwable? ->
 
                                 compositeDisposable.clear()
 
                                 Toast.makeText(context, t!!.message, Toast.LENGTH_LONG ).show()
 
-
-
                             }))
-
                     }
 
                     else{
@@ -128,13 +118,9 @@ object UserUtils {
 
                 override fun onCancelled(error: DatabaseError) {
 
-                  //  Toast.makeText(mainLayout!!, error.message, Toast.LENGTH_SHORT).show()
                     Toast.makeText(context, error.message, Toast.LENGTH_LONG ).show()
 
                 }
-
-
             })
-
     }
 }

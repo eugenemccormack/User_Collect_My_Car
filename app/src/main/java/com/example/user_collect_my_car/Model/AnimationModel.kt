@@ -21,7 +21,7 @@ class AnimationModel (var isRun: Boolean, var geoQueryModel: GeoQueryModel){
 
     init{
 
-        handler =  Handler()//Looper.getMainLooper())
+        handler =  Handler()
 
     }
 

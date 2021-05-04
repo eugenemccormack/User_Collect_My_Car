@@ -38,10 +38,6 @@ class TripPlanModel {
 
     var collectionPhotos: CollectionPhotos? = null
 
-/*    var collectionPhotos: String? = null
-
-    var dropOffPhotos: String? = null*/
-
     var collectionNumber: String? = null
 
     var distanceValue = 0
@@ -50,9 +46,13 @@ class TripPlanModel {
 
     var estimatedPrice = 0.0
 
+    //var discountPrice = 0.0
+
+    var totalPrice = 0.0
+
     var brakingCount = 0
 
-    var newDriverRating = 1
+    var newDriverRating = 5
 
     var oldDriverRating = 1
 

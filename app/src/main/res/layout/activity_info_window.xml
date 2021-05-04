@@ -24,30 +24,6 @@
             android:textSize="14sp"
             android:textStyle="bold" />
 
-
-
-        <!--        <TextView
-                    android:id="@+id/snippet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="10"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />-->
-
-<!--        <ImageButton
-            android:id="@+id/infoWindowButton"
-            style="@style/Widget.AppCompat.ImageButton"
-            android:layout_width="100dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center_horizontal"
-            android:alpha="0.9"
-
-            android:background="@drawable/button_border"
-            android:clickable="true"
-            android:elevation="30dp"
-            android:scaleType="fitCenter"
-            android:src="@android:drawable/btn_star_big_on" />-->
     </LinearLayout>
 
 

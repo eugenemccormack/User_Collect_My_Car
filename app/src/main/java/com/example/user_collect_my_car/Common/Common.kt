@@ -122,13 +122,7 @@ object Common {
                 val notification = builder.build()
 
                 notificationManager.notify(id, notification)
-
-
-
-
-
     }
-
 
 
     fun buildName(name: String?): String? { //, phone: String?): String? {
@@ -220,8 +214,6 @@ object Common {
 
         return startAddress.substring(0, firstIndexComma)
 
-
-
     }
 
     fun createIconWithDuration(context: Context, duration: String): Bitmap? {
@@ -254,8 +246,5 @@ object Common {
         else
 
             (BASE_PRICE/1000)*meters
-
     }
-
-
 }

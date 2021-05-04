@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -170,6 +169,68 @@
             android:paddingBottom="8dp">
 
             <TextView
+                android:id="@+id/distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="Distance"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/driver_distance_history"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:text="km"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="Duration"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/driver_duration_history"
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:text="Time"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
                 android:id="@+id/complete"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
@@ -186,37 +247,6 @@
                 android:background="@drawable/register_edittext"
                 android:gravity="center"
                 android:text="Status"
-                android:textAlignment="center"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:id="@+id/price"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:text="Amount"
-                android:textColor="@color/dark_Blue"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/driver_price_history"
-                android:layout_width="225dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/register_edittext"
-                android:gravity="center"
-                android:text="€"
                 android:textAlignment="center"
                 android:textColor="@color/dark_Blue"
                 android:textSize="20dp" />
@@ -242,7 +272,188 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_vertical"
-                android:text="Drivers Details"
+                android:text="Payment Details"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/dark_Blue"
+                android:textSize="30dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/braking_count"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="Hard Braking"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/driver_braking_count_history"
+                android:layout_width="165dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:text="Count"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/old_rating"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="Hired Rating"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/driver_old_rating_history"
+                android:layout_width="165dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:text="Rating"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/current_rating"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="New Rating"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/driver_current_rating_history"
+                android:layout_width="165dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:text="Rating"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/estimated_total"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="Estimated Total"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/driver_estimated_total_history"
+                android:layout_width="165dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:text="Price"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="Total"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/driver_price_history"
+                android:layout_width="165dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_edittext"
+                android:gravity="center"
+                android:text="Price"
+                android:textAlignment="center"
+                android:textColor="@color/dark_Blue"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/dark_Blue"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:text="Customers Details"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@color/dark_Blue"
                 android:textSize="30dp" />

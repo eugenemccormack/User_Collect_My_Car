@@ -14,7 +14,6 @@
         android:paddingBottom="8dp"
         android:background="@color/light_Blue">
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -71,7 +70,6 @@
 
             </LinearLayout>
 
-
         </RelativeLayout>
 
         <LinearLayout
@@ -91,8 +89,6 @@
                 android:paddingTop="8dp"
                 android:paddingRight="@dimen/activity_margin"
                 android:paddingBottom="8dp">
-
-
 
                 <TextView
                     android:id="@+id/txt_rating"
@@ -125,11 +121,7 @@
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
-
-
             </LinearLayout>
-
-
 
         </LinearLayout>
 
@@ -175,7 +167,6 @@
                 android:src="@drawable/ic_baseline_keyboard_return_24"/>
 
         </LinearLayout>
-
 
     </LinearLayout>
 

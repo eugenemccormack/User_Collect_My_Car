@@ -3,14 +3,12 @@ package com.example.user_collect_my_car
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.example.user_collect_my_car.Common.Common
 import com.example.user_collect_my_car.Model.UserModel
 import com.example.user_collect_my_car.Utils.UserUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_login_user.*
 
@@ -35,23 +33,16 @@ class LoginUser : AppCompatActivity() {
 
         not_signed_up.setOnClickListener {
 
-            Log.d("`Login Activity`", "Show Register Activity")
-
             val intent = Intent(this, RegisterUser::class.java)
 
             startActivity(intent)
-
         }
-
-
     }
 
     private fun signIn(){
 
-        val email = email_editText_login.text.toString()
-        val password = password_editText_login.text.toString()
-
-        Log.d("Login", "Attempt Login with Email / Password : $email/***")
+        val email = email_editText_login.text.toString().trim()
+        val password = password_editText_login.text.toString().trim()
 
         if(email.isEmpty()){
 
@@ -75,19 +66,13 @@ class LoginUser : AppCompatActivity() {
 
                 if(!it.isSuccessful) return@addOnCompleteListener
 
-                Log.d("Main", "Successfully Signed in with User with UID: ${it.result?.user!!.uid}")
-
                 Toast.makeText(this, "Successfully Signed in", Toast.LENGTH_SHORT).show()
 
-
                 firebaseAuth.addAuthStateListener(listener)
-
 
             }
 
             .addOnFailureListener{
-
-                Log.d("Main", "ERROR - Failed to Sign in with User : ${it.message}")
 
                 Toast.makeText(this, "ERROR - Failed to Sign in with User : ${it.message}", Toast.LENGTH_SHORT).show()
 
@@ -103,21 +88,14 @@ class LoginUser : AppCompatActivity() {
                 FirebaseMessaging.getInstance().token
                         .addOnFailureListener { e->
 
-
                             Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
 
                         }
 
                         .addOnSuccessListener { token ->
 
-
-                            Log.d("TOKEN", token)
                             UserUtils.updateToken(this@LoginUser, token)
-
-
-
                         }
-
 
                 getUserFromFirebase()
 
@@ -152,10 +130,7 @@ class LoginUser : AppCompatActivity() {
                         Toast.makeText(this@LoginUser, p0.message, Toast.LENGTH_SHORT).show()
 
                     }
-
-
                 })
-
     }
 
     private fun goToMapsActivity(model: UserModel?) {
@@ -164,15 +139,8 @@ class LoginUser : AppCompatActivity() {
 
         val intent = Intent(this, MapsActivity::class.java)
 
-        //intent.putExtra(MESSGAE, email)
-
         startActivity(intent)
 
         finish()
-
-
-
     }
-
-
 }

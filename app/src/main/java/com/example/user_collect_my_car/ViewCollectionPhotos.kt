@@ -2,7 +2,6 @@ package com.example.user_collect_my_car
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.user_collect_my_car.Adapter.ImageAdapter
 import com.example.user_collect_my_car.Common.Common
@@ -20,14 +19,9 @@ class ViewCollectionPhotos: AppCompatActivity(), ImageAdapter.OnItemClickListene
 
     lateinit var adapter: ImageAdapter
 
-
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_recyclerview)
-
 
         imagePosts = mutableListOf()
 
@@ -36,11 +30,6 @@ class ViewCollectionPhotos: AppCompatActivity(), ImageAdapter.OnItemClickListene
         imagesRecyclerView.adapter = adapter
 
         imagesRecyclerView.layoutManager = LinearLayoutManager(this)
-
-/*        mAuth = FirebaseAuth.getInstance()
-
-        mUser = mAuth!!.currentUser
-        val userID = mUser!!.uid*/
 
         var collection_id = intent.getStringExtra(History.MESSGAE)
 
@@ -56,93 +45,26 @@ class ViewCollectionPhotos: AppCompatActivity(), ImageAdapter.OnItemClickListene
 
                     val id = ds.key
 
-                    Log.d("ViewPhotos", "KEY " + id)
-
-/*                    val imageList = snapshot.getValue(TripPlanModel::class.java)
-
-                    Log.d("ViewPhotos", "ImagePosts " + imageList)
-
-                    if (imageList != null) {
-
-                        imagePosts.add(imageList.toString())
-
-
-
-
-                    }
-
-                    adapter.notifyDataSetChanged()*/
-
-
-
-
                     trip.child(collection_id!!).child("collectionPhotos").child(id!!).addListenerForSingleValueEvent(object : ValueEventListener{
                         override fun onDataChange(snapshot: DataSnapshot) {
 
-                            //val imageList = snapshot.getValue(TripPlanModel::class.java)
-
-                            Log.d("ViewPhotos", "KEY ID " + snapshot.value)
-
-                            //val imageList = snapshot.getValue(TripPlanModel::class.java)
-
-                            //Log.d("ViewPhotos", "ImagePosts " + imageList)
-
-                            Log.d("ViewPhotos", "SNAPSHOT TOSTRING " + snapshot.value.toString())
-
-                         //   if (imageList != null) {
-
                                 imagePosts.add(snapshot.value.toString())
 
-
-
-
-                         //   }
-
                             adapter.notifyDataSetChanged()
-
-
-
-
-
-
                         }
 
                         override fun onCancelled(error: DatabaseError) {
 
                         }
-
-
                     })
 
                 }
-
-                Log.d("ViewPhotos", "SnapShot " + snapshot.key)
-
-               // val imageList = snapshot.getValue(TripPlanModel::class.java)
-
-                //Log.d("ViewPhotos", "ImageList " + imageList)
-
-               /* if (imageList != null) {
-
-                    imagePosts.add(imageList)
-
-                    Log.d("ViewPhotos", "ImagePosts " + imagePosts)
-
-
-                }
-
-                adapter.notifyDataSetChanged()*/
             }
 
             override fun onCancelled(error: DatabaseError) {
 
-
             }
-
-
         })
-
-
     }
 
     override fun onItemClick(position: Int) {

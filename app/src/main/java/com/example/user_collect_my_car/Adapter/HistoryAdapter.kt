@@ -26,27 +26,17 @@ class HistoryAdapter (val context: Context, val posts: List<TripPlanModel>, priv
     }
 
     override fun getItemCount() = posts.size
-    //) /*(internal var context: Context): RecyclerView.Adapter<DriverAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         fun bind(tripPlanModel: TripPlanModel) {
 
-            itemView.id_history.text = tripPlanModel.collectionNumber//collectionsPhotos!!.photos
-            itemView.date_history.text = tripPlanModel.time//userModel.toString() //tripPlanModel.userModel!!.name //Users Name
+            itemView.id_history.text = tripPlanModel.collectionNumber
+            itemView.date_history.text = tripPlanModel.time
             itemView.from_history.text = tripPlanModel.originString
-
-
-            Log.d("Adapter", "TIME" + tripPlanModel.time)
-
-            Log.d("Adapter", "USER" + tripPlanModel.collectionNumber)
-            //Glide.with(context).load(tripPlanModel.userModel!!.image).into(itemView.image)
-
 
         }
         init{
-
             itemView.setOnClickListener(this)
-
         }
 
 
@@ -57,87 +47,12 @@ class HistoryAdapter (val context: Context, val posts: List<TripPlanModel>, priv
             if(position != RecyclerView.NO_POSITION) {
 
                 listener.onItemClick(position)
-
             }
-
         }
-
-
     }
 
     interface OnItemClickListener{
         fun onItemClick(position: Int)
-
-
     }
-
-
 }
 
-
-    /*
-
-    internal var driverList: MutableList<UserModel>
-
-    val lastItemId: String?
-        get() = driverList[driverList.size - 1].phone
-
-    fun addAll(newDrivers: ArrayList<UserModel>){
-
-        val init = driverList.size
-        driverList.addAll(newDrivers)
-        notifyItemRangeChanged(init, newDrivers.size)
-
-    }
-
-    fun removeLastItem(){
-
-        driverList.removeAt(driverList.size - 1)
-
-    }
-
-    init {
-
-        this.driverList = ArrayList()
-
-    }
-
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-
-        val itemView = LayoutInflater.from(context).inflate(R.layout.activity_recyclerview_layout, parent, false)
-
-        return MyViewHolder(itemView)
-
-
-
-    }
-
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
-        holder.driver_name.text = driverList[position].name
-        holder.driver_email.text = driverList[position].email
-
-
-
-    }
-
-    override fun getItemCount(): Int {
-
-        return driverList.size
-
-
-
-    }
-
-    inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-
-
-
-        internal var driver_name: TextView = itemView.findViewById<TextView>(R.id.driver_name)
-
-        internal var driver_email: TextView = itemView.findViewById<TextView>(R.id.driver_email)
-
-
-    }*/
-//}

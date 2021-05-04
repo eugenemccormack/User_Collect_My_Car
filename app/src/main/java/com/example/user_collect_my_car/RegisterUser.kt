@@ -39,13 +39,9 @@ class RegisterUser : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_user)
 
-
-
-
         iv_profileImage.setOnClickListener {
 
             selectImage()
-
         }
 
         insurance_upload_button_register.setOnClickListener {
@@ -56,8 +52,6 @@ class RegisterUser : AppCompatActivity() {
             Log.d("Register", "Button ID $buttonID")
 
             selectLicenceDocuments()
-
-
         }
 
 
@@ -69,14 +63,10 @@ class RegisterUser : AppCompatActivity() {
 
         not_signed_up.setOnClickListener {
 
-            Log.d("MainActivity", "Show Login Activity")
-
             val intent = Intent(this, LoginUser::class.java)
 
             startActivity(intent)
-
         }
-
     }
 
     private fun selectLicenceDocuments() {
@@ -95,10 +85,6 @@ class RegisterUser : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-
-        Log.d("MainActivity", "Photo was Selected 1")
-
-        Log.d("Register", "requestCode " + requestCode)
 
         super.onActivityResult(requestCode, resultCode, data)
 

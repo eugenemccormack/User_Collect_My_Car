@@ -41,24 +41,35 @@
 
         <activity
             android:name=".RequestDriverActivity"
-            android:label="@string/title_activity_request_driver" />
+            android:label="@string/title_activity_request_driver"
+            android:screenOrientation="portrait"/>
 
-         <activity
-        android:name=".ViewDriverInfo"
-        android:label="@string/title_activity_view_driver_info"/>
+
         <activity
-            android:name=".UserHistory"/>
-        <activity android:name=".History" />
-        <activity android:name=".ViewCollectionPhotos" />
-        <activity android:name=".ViewDropOffPhotos" />
+            android:name=".UserHistory"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".History"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ViewCollectionPhotos"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ViewDropOffPhotos"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
             android:screenOrientation="portrait"/>
+
         <activity android:name=".RegisterUser"
-            android:label="Register"/>
+            android:label="Register"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".LoginUser"
-            android:label="Customer">
+            android:label="Customer"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

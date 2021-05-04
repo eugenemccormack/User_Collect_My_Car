@@ -42,14 +42,6 @@
     <string name="time">Time</string>
     <string name="estimated_amount">Estimated Amount</string>
 
-    <string-array name="Languages">
-        <item>Java</item>
-        <item>Kotlin</item>
-        <item>Swift</item>
-        <item>Python</item>
-        <item>Scala</item>
-        <item>Perl</item>
-    </string-array>
 
 
 </resources>

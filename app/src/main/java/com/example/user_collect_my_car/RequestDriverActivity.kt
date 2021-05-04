@@ -1,10 +1,8 @@
 package com.example.user_collect_my_car
 
-import android.Manifest
 import android.animation.ValueAnimator
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
@@ -14,13 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.telephony.SmsManager
-import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.user_collect_my_car.Common.Common
@@ -30,7 +25,6 @@ import com.example.user_collect_my_car.Model.TripPlanModel
 import com.example.user_collect_my_car.Remote.IGoogleAPI
 import com.example.user_collect_my_car.Remote.RetroFitClient
 import com.example.user_collect_my_car.Utils.UserUtils
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -61,10 +55,7 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
 
-
     private var selectedPlaceEvent: SelectedPlaceEvent?= null
-
-    //Routes
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -94,9 +85,6 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
     private var driverPhoneCall: String = ""
 
 
-
-
-
     override fun onStart() {
 
         super.onStart()
@@ -104,8 +92,6 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
         if(!EventBus.getDefault().isRegistered(this))
 
             EventBus.getDefault().register(this)
-
-
     }
 
     override fun onStop() {
@@ -142,7 +128,7 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
         Common.showNotification(this, Random.nextInt(),
                 "Thank You!",
-                "Your Drop-off " + event.tripId + " has been Complete",
+                "Drop-Off " + event.tripId + " has been Complete",
                 null)
 
         finish()
@@ -164,12 +150,6 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
                             mMap.clear()
 
-                            /*val cameraPos = CameraPosition.Builder().target(mMap.cameraPosition.target)
-                                    .tilt(0f).zoom(mMap.cameraPosition.zoom).build()
-                            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPos))*/
-
-                            //Get Routes
-
                             val driverLocation = StringBuilder()
                                     .append(tripPlanModel!!.currentLat)
                                     .append(",")
@@ -183,9 +163,9 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                                             .observeOn(AndroidSchedulers.mainThread())
                                             .subscribe{ returnResult ->
 
-                                                var blackPolylineOptions: PolylineOptions ?= null
+/*                                                var blackPolylineOptions: PolylineOptions ?= null
                                                 var polylineList:List<LatLng?> ?= null
-                                                var blackPolyline : Polyline ?= null
+                                                var blackPolyline : Polyline ?= null*/
 
                                                 try {
 
@@ -206,14 +186,12 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                                                     }
 
                                                     blackPolylineOptions = PolylineOptions()
-                                                    blackPolylineOptions.color(R.color.blue) //Color.WHITE
-                                                    blackPolylineOptions.width(12f)
-                                                    blackPolylineOptions.startCap(SquareCap())
-                                                    blackPolylineOptions.jointType(JointType.ROUND)
-                                                    blackPolylineOptions.addAll(polylineList)
+                                                    blackPolylineOptions!!.color(R.color.white) //Color.WHITE
+                                                    blackPolylineOptions!!.width(12f)
+                                                    blackPolylineOptions!!.startCap(SquareCap())
+                                                    blackPolylineOptions!!.jointType(JointType.ROUND)
+                                                    blackPolylineOptions!!.addAll(polylineList)
                                                     blackPolyline = mMap.addPolyline(blackPolylineOptions)
-
-                                                    //Add Car Icon for Origin
 
                                                     val objects = jsonArray.getJSONObject(0)
 
@@ -236,6 +214,7 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                                                             .include(destination)
                                                             .build()
 
+
                                                     addPickupMarkerWithDuration(duration, origin)
 
                                                     addDriverMarker(destination)
@@ -245,24 +224,21 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
                                                     initDriverMoving(event.tripId, tripPlanModel)
 
-                                                    //Load Driver Avatar
-
                                                     Glide.with(this@RequestDriverActivity)
                                                             .load(tripPlanModel!!.driverInfoModel!!.image)
                                                             .into(driver_image)
 
                                                     txt_driver_name.setText(tripPlanModel!!.driverInfoModel!!.name)
                                                     txt_car_number.setText(tripPlanModel!!.driverInfoModel!!.licenceNumber)
-                                                    txt_rating.setText(tripPlanModel!!.driverInfoModel!!.rating)
+                                                    txt_rating.setText(tripPlanModel!!.driverInfoModel!!.rating.toString())
 
                                                     driverPhoneCall = tripPlanModel!!.driverInfoModel!!.phone.toString()
 
                                                     confirm_driver_layout.visibility = View.GONE
                                                     confirm_pickup_layout.visibility = View.GONE
 
+
                                                     driver_info_layout.visibility = View.VISIBLE
-
-
 
 
                                                 } catch (e: java.lang.Exception) {
@@ -270,12 +246,8 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                                                     Toast.makeText(this@RequestDriverActivity, e.message, Toast.LENGTH_SHORT).show()
 
                                                 }
-
-
-
                                             }
                             )
-
                         }
 
                         else{
@@ -291,12 +263,8 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                         Toast.makeText(this@RequestDriverActivity, error.message, Toast.LENGTH_SHORT).show()
 
                     }
-
-
                 })
-
     }
-
 
 
     private fun initDriverMoving(tripId: String, tripPlanModel: TripPlanModel) {
@@ -329,10 +297,7 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                         Toast.makeText(this@RequestDriverActivity, error.message, Toast.LENGTH_SHORT).show()
 
                     }
-
-
                 })
-
     }
 
     private fun moveMarkerAnimation(marker: Marker, from: String, to: String) {
@@ -362,14 +327,12 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
                                 }
 
-                                blackPolylineOptions!!.color(R.color.blue) //Color.WHITE
+                                blackPolylineOptions!!.color(R.color.white) //Color.WHITE
                                 blackPolylineOptions!!.width(12f)
                                 blackPolylineOptions!!.startCap(SquareCap())
                                 blackPolylineOptions!!.jointType(JointType.ROUND)
                                 blackPolylineOptions!!.addAll(polylineList)
                                 blackPolyline = mMap.addPolyline(blackPolylineOptions)
-
-                                //Add Car Icon for Origin
 
                                 val objects = jsonArray.getJSONObject(0)
 
@@ -384,8 +347,6 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                                 val bitmap = Common.createIconWithDuration(this@RequestDriverActivity, duration)
 
                                 originMarker!!.setIcon(BitmapDescriptorFactory.fromBitmap(bitmap))
-
-                                //Moving Driver
 
                                 val runnable = object:Runnable{
 
@@ -422,18 +383,15 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                                         if(index < polylineList!!.size - 2)
 
                                             handler!!.postDelayed(this, 1500)
-
-
-
                                     }
 
                                 }
 
-                                handler = Handler(Looper.getMainLooper())//Handler()
+                                handler = Handler(Looper.getMainLooper())
                                 index = -1
                                 next = 1
                                 handler!!.postDelayed(runnable, 1500)
-                                driversOldPosition = to // Set New Driver Position
+                                driversOldPosition = to
 
 
                             } catch (e: java.lang.Exception) {
@@ -441,17 +399,14 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                                 Toast.makeText(this@RequestDriverActivity, e.message, Toast.LENGTH_SHORT).show()
 
                             }
-
                         }
         )
-
     }
 
     private fun addDriverMarker(destination: LatLng) {
 
         destinationMarker = mMap.addMarker(MarkerOptions().position(destination).flat(true)
                 .icon(bitmapDescriptorFromVector(R.drawable.ic_red_car)))
-
     }
 
     private fun Context.bitmapDescriptorFromVector(vectorResId:Int): BitmapDescriptor {
@@ -479,9 +434,7 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
             Common.driversFound.get(lastDriverCall!!.key)!!.isDecline = true
 
             findDriver(selectedPlaceEvent!!)
-
         }
-
     }
 
     @Subscribe(sticky = true,threadMode = ThreadMode.MAIN)
@@ -493,18 +446,14 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 Common.driversFound.get(lastDriverCall!!.key)!!.isDecline = true
 
-            //Finish the Activity
             finish()
-
         }
-
     }
 
     @Subscribe(sticky = true,threadMode = ThreadMode.MAIN)
     fun onSelectPlaceEvent(event:SelectedPlaceEvent){
 
         selectedPlaceEvent = event
-
     }
 
 
@@ -516,7 +465,6 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
         init()
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -526,8 +474,6 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
         iGoogleAPI = RetroFitClient.instance!!.create(IGoogleAPI::class.java)
 
-        //Event
-
         confirm_driver_button.setOnClickListener {
 
             confirm_pickup_layout.visibility = View.VISIBLE
@@ -535,7 +481,6 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
             confirm_driver_layout.visibility = View.GONE
 
             setDataPickUp()
-
         }
 
         confirm_pickup_button.setOnClickListener {
@@ -548,11 +493,7 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 return@setOnClickListener
 
-            //Clear Map
-
             mMap.clear()
-
-            //Tilt
 
             val cameraPosition = CameraPosition.Builder().target(selectedPlaceEvent!!.origin)
                     .tilt(45f)
@@ -567,28 +508,11 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
         call_driver.setOnClickListener {
 
-          /*  //val smsManager = SmsManager.getDefault() as SmsManager
-            smsManager.sendTextMessage("driverPhoneCall", null, "sms message", null, null)*/
-
-
- /*           val uri = Uri.parse(driverPhoneCall)
-            val intent = Intent(Intent.ACTION_SENDTO, uri)
-            intent.putExtra("sms_body", "Here goes your message...")
-            startActivity(it)*/
             val dialIntent = Intent(Intent.ACTION_DIAL)
             dialIntent.data = Uri.parse("tel:" + driverPhoneCall)
             startActivity(dialIntent)
 
         }
-
-/*        if (ActivityCompat.checkSelfPermission(this@RequestDriverActivity, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this@RequestDriverActivity, Manifest.permission.SEND_RESPOND_VIA_MESSAGE) != PackageManager.PERMISSION_GRANTED) {
-
-            Toast.makeText(this@RequestDriverActivity, getString(R.string.permission_require), Toast.LENGTH_SHORT).show()
-
-            return
-        }*/
-
-
 
     }
 
@@ -598,10 +522,6 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
         originMarker = mMap.addMarker(MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker())
                 .position(selectedPlaceEvent!!.origin))
-
-        //addPulsatingEffect(selectedPlaceEvent!!) // Stop Duplicate Trip Database Entry
-
-
 
     }
 
@@ -648,29 +568,18 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun findDriver(selectedPlaceEvent: SelectedPlaceEvent) {
 
-        //var foundDriver: DriverGeoModel ?= null//String? = null
-
         if(Common.selectedDriverKey != null) {
-
-            //if(Common.driversFound.size > 0) {
 
             var foundDriver: DriverGeoModel ?= null
 
             var chosenDriver = Common.selectedDriverKey
 
-            //foundDriver = Common.selectedDriverKey
-
-            Toast.makeText(this@RequestDriverActivity, Common.selectedDriverKey.toString(), Toast.LENGTH_SHORT).show()
-
-            Toast.makeText(this@RequestDriverActivity, Common.selectedDriver!!.name.toString(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@RequestDriverActivity, "Waiting for " + Common.selectedDriver!!.name.toString() + " to Accept Drop Off", Toast.LENGTH_LONG).show()
 
             for(key in Common.driversFound.keys){
 
                 var foundDriverKey = Common.driversFound[key]!!.key
 
-                Log.d("RequestDriverActivity", "Inside For Loop")
-                Log.d("RequestDriverActivity", "$chosenDriver")
-                Log.d("RequestDriverActivity", "$foundDriver")
 
                 if(chosenDriver!! == foundDriverKey){
 
@@ -678,27 +587,18 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
                         foundDriver = Common.driversFound[key]
 
-                        Log.d("RequestDriverActivity", "foundDriverKey" + foundDriver.toString())
-
                         break
                     }
 
                     else{
 
-                        Log.d("RequestDriverActivity", "Continue")
-                        continue //If Already Decline Before, Skip and Continue
+                        continue
                     }
 
                 }
             }
 
-
-
-
-
             if (foundDriver != null) {
-
-                Log.d("RequestDriverActivity", "sendRequestToDriver")
 
                 UserUtils.sendRequestToDriver(this@RequestDriverActivity,
                         main_layout,
@@ -721,7 +621,6 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         else{
 
-            //Toast.makeText(this@RequestDriverActivity, getString(R.string.drivers_not_found), Toast.LENGTH_SHORT).show()
             Toast.makeText(this@RequestDriverActivity, getString(R.string.no_driver_selected), Toast.LENGTH_SHORT).show()
 
             lastDriverCall = null
@@ -732,30 +631,21 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
+
         mMap = googleMap
 
-
-
         drawPath(selectedPlaceEvent!!)
-
-
 
     }
 
     private fun drawPath(selectedPlaceEvent: SelectedPlaceEvent) {
 
-        //Request API
-        //getString(R.string.google_api_key)
-
-        Log.d("RequestDriverActivity", "Request API")
 
         compositeDisposable.add(iGoogleAPI.getDirections(
                 "driving", "less_driving", selectedPlaceEvent.originString, selectedPlaceEvent.destinationString,getString(R.string.google_api_key))
         !!.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { returnResult ->
-
-                    Log.d("API_RETURN", returnResult)
 
                     try {
 
@@ -784,18 +674,18 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                         greyPolyline = mMap.addPolyline(polylineOptions)
 
                         blackPolylineOptions = PolylineOptions()
-                        blackPolylineOptions!!.color(R.color.blue)
+                        blackPolylineOptions!!.color(R.color.light_Blue)
                         blackPolylineOptions!!.width(12f)
                         blackPolylineOptions!!.startCap(SquareCap())
                         blackPolylineOptions!!.jointType(JointType.ROUND)
                         blackPolylineOptions!!.addAll(polylineList)
                         blackPolyline = mMap.addPolyline(blackPolylineOptions)
 
-                        //Animator
+/*                        //Animator
 
                         val valueAnimator = ValueAnimator.ofInt(0,100)
 
-                        valueAnimator.duration = 1100
+                        valueAnimator.duration = 1000
                         valueAnimator.repeatCount = ValueAnimator.INFINITE
                         valueAnimator.interpolator = LinearInterpolator()
                         valueAnimator.addUpdateListener { value ->
@@ -814,13 +704,11 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
                         }
 
-                        valueAnimator.start()
+                        valueAnimator.start()*/
 
                         val latLngBound = LatLngBounds.Builder().include(selectedPlaceEvent.origin)
                                 .include(selectedPlaceEvent.destination)
                                 .build()
-
-                        //Add Car Icon for Origin
 
                         val objects = jsonArray.getJSONObject(0)
 
@@ -847,7 +735,6 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
                         distance_confirm_driver.text = (distanceText)
 
-
                         selectedPlaceEvent.originAddress = startAddress
                         selectedPlaceEvent.origin = LatLng(startLocation.getDouble("lat"), startLocation.getDouble("lng"))
                         selectedPlaceEvent.destinationAddress = endAddress
@@ -867,10 +754,6 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
 
                         amount_confirm_driver.text = "€"+round.toString()
 
-                        //amount_confirm_driver.text = StringBuilder("€").append(totalPrice)
-
-
-
                         addOriginMarker(duration, startAddress)
 
                         addDestinationMarker(endAddress)
@@ -882,13 +765,8 @@ class RequestDriverActivity : AppCompatActivity(), OnMapReadyCallback {
                     } catch (e: java.lang.Exception) {
 
                         Toast.makeText(this@RequestDriverActivity, e.message, Toast.LENGTH_SHORT).show()
-
                     }
-
                 })
-
-
-
     }
 
     private fun addDestinationMarker(endAddress: String) {
