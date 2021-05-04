@@ -66,8 +66,6 @@ class LoginUser : AppCompatActivity() {
 
                 if(!it.isSuccessful) return@addOnCompleteListener
 
-                Toast.makeText(this, "Successfully Signed in", Toast.LENGTH_SHORT).show()
-
                 firebaseAuth.addAuthStateListener(listener)
 
             }
